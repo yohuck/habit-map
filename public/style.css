@@ -33,8 +33,12 @@ nav{
 
 .title{
     font-size: 1.3rem;
+    line-height: 1.4rem;
     margin-left: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     font-weight: bold;
+    color: #e0fde8;
 }
 nav ul{
     display: flex;
@@ -42,14 +46,14 @@ nav ul{
 }
 
 nav ul li{
-    margin: 1rem;
+    margin: 0.5rem;
     list-style: none;
 }
 
 nav ul li a{
     text-decoration: none;
     color: var(--bg-color);
-    font-size: 1rem;
+    font-size: clamp(0.8rem, calc(0.8rem + 1vw), 1.4rem);
 }
 
 
@@ -67,12 +71,38 @@ section{
     flex-direction: column;
     justify-content: center;
     
+    
+}
+
+.hero button{
+    margin: 2rem auto;
+}
+.hero-2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+}
+
+.bg{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0CCA4A;
+    opacity: 0.1;
+    background-image:  radial-gradient(#e0fbfd 1.85px, transparent 1.85px), radial-gradient(#e0fbfd 1.85px, #0CCA4A 1.85px);
+    background-size: 74px 74px;
+    background-position: 0 0,37px 37px;
+z-index: -1;
 }
 
 button{
     margin: 1rem auto;
     padding: 0.5rem 1rem;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-family: monospace;
     font-weight: bold;
     background-color: var(--accent);
@@ -80,6 +110,43 @@ button{
         box-shadow: 5px 5px rgb(40, 48, 49);
         transition-duration: .5s;
 
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    background-color: var(--bg-color);
+}
+
+.slot{
+    width: clamp(20px, calc(20px + 2vw), 40px);
+    background-color: var(--accent);
+    height: clamp(20px, calc(20px + 2vw), 40px);
+    margin: 0.5rem 0.2rem;
+    box-shadow: 3px 3px rgb(40, 48, 49);
+}
+
+.slot:nth-of-type(3){
+    background-color: #ca0c5bce;
+}
+
+h2{
+    margin: 1rem auto;
+}
+
+h5{
+    margin: 1rem 0.5rem;
+}
+
+.habit{
+    background-color: #ca0c5b;
+    font-size: 1rem;
+    padding: 0.2rem 0.3rem;
+    margin: 0.5rem;
 }
 
 button:hover, button:active{
