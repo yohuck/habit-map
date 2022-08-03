@@ -99,6 +99,11 @@ section{
 z-index: -1;
 }
 
+article p {
+    max-width: 600px;
+    margin: 1rem auto;
+}
+
 button{
     margin: 1rem auto;
     padding: 0.5rem 1rem;
