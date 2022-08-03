@@ -189,6 +189,7 @@ article{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 
 footer{
@@ -213,15 +214,19 @@ footer li{
 
 }
 
+
+
+
+
+
 .card{
     width: 90%;
-    max-width: 1200px;
-    margin: 2rem auto;
+    max-width: 1000px;
+    margin: 4rem auto;
     border: 1px solid black;
     border-radius: 5px;
-    padding: 3rem;
+    padding: 5rem;
     background-color: var(--bg-color);
-    text-align: center;
     display: flex;
 }
 
@@ -230,51 +235,6 @@ footer li{
 }
 
 
-.card .entry sub{
-    font-size: 1rem;
-    border-top: 1px solid black;
-    vertical-align: text-bottom;
-
+.ad-lib-copy{
 }
 
-.entry{
-    width: 100%;
-    /* display: inline-block; */
-}
-
-.entry-input{
-    /* display: inline-block; */
-    position: relative;
-}
-
- input{
-    background-color: var(--bg-color);
-    border: none;
-    height: 4rem;
-    font-size: 1rem;
-    min-width: 8ch;
-    text-align: center;
-    font-family: 'JetBrains Mono', monospace;
-    margin: 2rem;
-    
-}
-
-label{
-    position: absolute;
-    top: 3rem;
-    right: 0;
-    width: 100%;
-    height: 50%;
-    margin: 2rem auto;
-    display: grid;
-    place-items: center;
-    border-top: 2px solid black;
-}
-
-form{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--bg-color);
-    padding: 1rem;
-}
