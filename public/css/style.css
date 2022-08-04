@@ -364,7 +364,7 @@ input{
     position: relative;
 }
 
-input::before{
+/* input::before{
     width: 100%;
     height: 100%;
     left: 0;
@@ -378,7 +378,7 @@ input::after{
     top: -5px;
     content: "7";
     position: absolute;
-}
+} */
 
 input[type=range] {
     height: 34px;
