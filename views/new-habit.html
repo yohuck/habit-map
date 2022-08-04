@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/style.css">
+    <script src="https://kit.fontawesome.com/1939b32d5e.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="title">Habit Stack</div>
+
+            <ul>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Login</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <section class="hero" id="login">
+            <form action="#">
+                <div class="ribbon">
+                    <h4>ADD NEW HABIT</h4>
+                </div>
+
+                <div class="ig topper">
+                    <label for="name">Habit name:</label>
+                    <input type="text" name="habit_name" id="habit_name">
+                </div>
+
+
+
+                <div class="ig">
+                    <label for="name">Frequency:</label>
+                    <input type="range" list='freq' min="1" max="7" step="1" name="frequency" id="frequency">
+                </div>
+
+
+
+
+                <datalist id="freq">
+                    <option value="1" label="1"></option>
+                    <option value="2" label="2"></option>
+                    <option value="3" label="3"></option>
+                    <option value="4" label="4"></option>
+                    <option value="5" label="5"></option>
+                    <option value="6" label="6"></option>
+                    <option value="7" label="7"></option>
+                    </datalist>
+
+
+                    <div class="ig col">
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" rows="4" cols="50">Describe the habit you'd like to establish
+                        </textarea>
+                    </div>
+
+
+                <button type="submit">Submit</button>
+            </form>
+
+        </section>
+
+
+
+
+
+    </main>
+    <footer>
+        <ul>
+            <li>This is our placeholder footer</li>
+        </ul>
+    </footer>
+    <script src="../public/style.css"></script>
+</body>
+</html>
