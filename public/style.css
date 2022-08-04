@@ -17,8 +17,13 @@
 body{
     font-family: 'JetBrains Mono', monospace;
     background-color: #e0fde8;
-    scroll-snap-type: mandatory;
     
+}
+
+main{
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
 }
 
 /* header styling */
@@ -48,7 +53,7 @@ nav ul{
 }
 
 nav ul li{
-    margin: 0.5rem;
+    margin: 0.3rem;
     list-style: none;
 }
 
@@ -130,10 +135,10 @@ button{
 }
 
 .slot{
-    width: clamp(20px, calc(20px + 2vw), 40px);
+    width: clamp(5px, calc(5px + 2vw), 40px);
     background-color: var(--accent);
-    height: clamp(20px, calc(20px + 2vw), 40px);
-    margin: 0.5rem 0.2rem;
+    height: clamp(5px, calc(5px + 2vw), 40px);
+    margin: 0.2rem 0.2rem;
     box-shadow: 3px 3px rgb(40, 48, 49);
 }
 
@@ -195,10 +200,8 @@ article{
 
 footer{
     width: 100%;
-    /* position: fixed; */
     bottom: 0;
     background-color: var(--accent);
-    height: 4rem;
 }
 
 footer ul{
@@ -220,8 +223,8 @@ footer li{
 
 .card{
     position: absolute;
-     top: 15%; 
-     transform: (translateX(-50%)); 
+    top: 15%; 
+    transform: (translateX(-50%)); 
     width: 90%;
     max-width: 350px;
     text-align: center;
@@ -234,19 +237,20 @@ footer li{
     flex-direction: column;
     transition-duration: 2s;
     transition-property: transform;
-    /* align-items: center;
-    box-shadow: 4px 4px rgb(40, 48, 49); */
 }
 
 .card h3{
     font-size: 1.5rem;
-    margin: 1rem;
 
 }
 
 .card p{
     font-size: 1rem;
     text-align: center;
+}
+
+.habit-info{
+    text-align: left;
 }
 
 .no{
@@ -262,8 +266,11 @@ footer li{
 .stack{
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 .stack h2{
+    margin-top: 15vh;
     font-size: clamp(2rem, calc(2rem + 3vw), 5rem);
     text-align: center;
 }
@@ -274,7 +281,7 @@ footer li{
 
 
 .horiz-scroll{
-    /* position: relative; */
+    position: relative;
     width: 100%;
     /* margin-top: 5rem; */
     display: flex;
@@ -310,3 +317,30 @@ footer li{
 }
 
 
+form{
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--bg-color);
+    padding: 2rem;
+    box-shadow: 5px 5px rgb(40, 48, 49);
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.ig{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+
+input{
+    margin: 0 1rem;
+    max-width: 20ch;
+}
