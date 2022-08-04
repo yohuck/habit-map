@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Chris",
+    "email": "chris@test.com",
+    "password": "password",
+    "phone_number": "9995553333"
+  },
+  {
+    "name": "Sean",
+    "email": "sean@test.com",
+    "password": "password",
+    "phone_number": "9995553333"
+  },
+  {
+    "name": "Mar'Quis",
+    "email": "marquis@test.com",
+    "password": "password",
+    "phone_number": "9995553333"
+  },
+  {
+    "name": "Lindsey",
+    "email": "lindsey@test.com",
+    "password": "password",
+    "phone_number": "9995553333"
+  },
+  {
+    "name": "Eric",
+    "email": "eric@test.com",
+    "password": "password",
+    "phone_number": "9995553333"
+  }
+]
