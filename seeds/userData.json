@@ -4,34 +4,34 @@
     "last_name": "Ledford",
     "email": "chris@test.com",
     "password": "password",
-    "phone_number": "9995553333"
+    "phone_number": 9995553333
   },
   {
     "first_name": "Sean",
     "last_name": "Huggins",
     "email": "sean@test.com",
     "password": "password",
-    "phone_number": "9995553333"
+    "phone_number": 9995553333
   },
   {
     "first_name": "Mar'Quis",
     "last_name": "Hubert",
     "email": "marquis@test.com",
     "password": "password",
-    "phone_number": "9995553333"
+    "phone_number": 9995553333
   },
   {
     "first_name": "Lindsey",
     "last_name": "Lansford",
     "email": "lindsey@test.com",
     "password": "password",
-    "phone_number": "9995553333"
+    "phone_number": 9995553333
   },
   {
     "first_name": "Eric",
     "last_name": "Lake",
     "email": "eric@test.com",
     "password": "password",
-    "phone_number": "9995553333"
+    "phone_number": 9995553333
   }
 ]
