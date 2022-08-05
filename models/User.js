@@ -15,15 +15,27 @@ User.init(
       allowNull: false,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
+      validate: {
+        isUUID: 4,
+      },
     },
-    name: {
+    first_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
       validate: {
-        isAlphanumeric: true,
+        isAlpha: true,
         notNull: {
-          msg: "Please enter your name",
+          msg: "Please enter your first name",
+        },
+      },
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isAlpha: true,
+        notNull: {
+          msg: "Please enter your last name",
         },
       },
     },
@@ -42,6 +54,13 @@ User.init(
         len: [8],
       },
     },
+    // phone_number: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: true,
+    //   validate: {
+    //     isInt: true,
+    //   },
+    // },
   },
   {
     hooks: {
