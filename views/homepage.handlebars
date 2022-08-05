@@ -3,7 +3,10 @@
                 <h1>Habit Stack</h1>
                 <p>A simple tool to help you build habits that stick through reminder, repetition, and celebration.</p>
             </article>
-            <button>Sign up now!</button>
+
+        <button id="signup">Sign up now!</button>
+
+        
         </section>
 
 
@@ -42,7 +45,7 @@
                 <div class="slot"></div>
                 <div class="slot"></div>
             </div>
-            <button>Add new habit</button>
+            <button id="new_habit">Add new habit</button>
             <article class="hero-text">
                 <h2>Your Reports</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, ipsam.</p>
@@ -167,3 +170,21 @@
     
             </div>
         </section>
+
+        <script>
+            const signup = document.getElementById('signup')
+const new_habit = document.getElementById('new_habit')
+
+signup.addEventListener('click', () => {
+
+    location.assign('/register')
+})
+
+new_habit.addEventListener('click', () => {
+
+
+    location.assign('/new')
+})
+
+
+        </script>
