@@ -1,3 +1,5 @@
+// const { build } = require("../models/User");
+
 module.exports = {
     format_date: (date) => {
       // Format date as MM/DD/YYYY
@@ -20,3 +22,50 @@ module.exports = {
       }
     },
   };
+
+
+// Generates the days of the week
+const buildWeek = () => {
+  const today = new Date()
+  const dayOfWeek = today.getDay()
+  let weekArr = []
+  let dayCount = 0
+
+  for (let i = 0; i < dayOfWeek ; i++){
+    let isToday = false
+    let isPast = true
+    let day = new Date(today.getFullYear(), today.getMonth(), today.getDate() - (dayOfWeek-1 -i))
+    if (i == dayOfWeek -1){
+      isToday = true
+      isPast = false
+    }
+    weekArr.push({date: day,
+                  day: dayCount,
+                  isPast: isPast,
+                  isToday: isToday,
+                  isFuture: false
+                })
+
+    dayCount++
+  }
+
+
+  let daysLeft = 7 - dayCount
+
+  for (let i = 0; i < daysLeft ; i++){
+    let day = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i + 1)
+    weekArr.push({date: day,
+                day: dayCount,
+                isPast: false,
+                isToday: false,
+                isFuture: true
+              })
+    dayCount++
+  }
+
+  return weekArr
+
+}
+
+console.log(buildWeek())
+  
