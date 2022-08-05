@@ -143,9 +143,28 @@ button{
     box-shadow: 3px 3px rgb(40, 48, 49);
 }
 
-.slot:nth-of-type(3){
-    background-color: #ca0c5bce;
+#today::before{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.5rem;
+    content: 'today';
+    position: absolute;
+
 }
+
+#today{
+    background-color: violet;
+    position: relative;
+}
+
+.future{
+    background-color: #bdc5ca;
+}
+
+/* .slot:nth-of-type(3){
+    background-color: #ca0c5bce;
+} */
 
 h2{
     margin: 1rem auto;

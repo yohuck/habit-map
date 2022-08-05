@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const helpers = require("../utils/helpers")
 
 router.get('/', async(req, res) => {
     res.render('homepage', {
@@ -35,5 +36,16 @@ router.get('/new', async (req, res) => {
 
     })
 })
+
+
+router.get('/users', async (req, res) => {
+    console.log(helpers.buildWeek())
+    const test = helpers.buildWeek()
+    res.render('users', {
+        days: test
+    })
+})
+
+
 
 module.exports = router;
