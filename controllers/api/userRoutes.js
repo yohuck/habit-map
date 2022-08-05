@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
-//getting user by id
+//getting all userData
 router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll(req.body);
@@ -11,6 +11,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//getting userData by id
 router.get("/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);
