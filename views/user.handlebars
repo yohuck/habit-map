@@ -1,0 +1,46 @@
+       <section class="hero-2" id="stacks">
+            <div class="bg"></div>
+            <article class="hero-text">
+               <h2>Your Stack</h2>
+            
+               
+            </article>
+
+
+
+
+            {{#each user as |habit|}}
+            <p class="habit_descrip">{{habit.description}}</p>
+            <div class="row">
+                <h5>{{habit.name}}</h5>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+            </div>
+            {{/each}}
+
+
+{{!-- <div class="row">
+    <h5>Dynamically created!</h5>
+{{#each days as |day |}}
+   <div class='slot
+   {{#if day.isFuture}}future{{/if}}'
+   {{#if day.isToday}}id="today"{{/if}}
+   ></div>
+{{/each}}
+</div> --}}
+   
+            <button id="new_habit">Add new habit</button>
+            <article class="hero-text">
+                <h2>Your Reports</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, ipsam.</p>
+            </article>
+            <article class="hero-text">
+                <h2>Your Reminders</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum esse placeat at quia praesentium natus dicta veniam necessitatibus magni, ipsum magnam, provident reiciendis voluptatibus, enim dolores? </p>
+            </article>
+        </section> 

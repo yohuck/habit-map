@@ -507,3 +507,9 @@ label{
 .col{
     flex-direction: column;
 }
+
+
+.habit_descrip{
+    max-width: 600px;
+    margin: 0 auto;
+}
