@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Habit extends Model {}
+class Entry extends Model {}
 
-Habit.init(
+Entry.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,28 +11,29 @@ Habit.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
+    date: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     },
-    user_id: {
-      type: DataTypes.UUID,
+    habit_id: {
+      type: DataTypes.INTEGER,
       references: {
-        model: "user",
+        model: "habit",
         key: "id",
       },
     },
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: "habit",
+    modelName: "entry",
   }
 );
 
-module.exports = Habit;
+module.exports = Entry;
