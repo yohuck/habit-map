@@ -18,8 +18,8 @@ Habit.init(
     description: {
       type: DataTypes.STRING,
     },
-    user_id: {
-      type: DataTypes.UUID,
+    userId: {
+      type: DataTypes.INTEGER,
       references: {
         model: "user",
         key: "id",

@@ -3,12 +3,15 @@ const Habit = require("./Habit");
 const Entry = require("./Entry");
 
 User.hasMany(Habit, {
-  foreignKey: "habit_id",
   onDelete: "CASCADE",
 });
 
-Habit.belongsTo(User, {
-  foreignKey: "habit_id",
+Habit.belongsTo(User);
+
+Habit.hasMany(Entry);
+
+Entry.belongsTo(Habit, {
+  onDelete: "CASCADE",
 });
 
-module.exports = { User, Habit };
+module.exports = { User, Habit, Entry };
