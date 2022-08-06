@@ -14,6 +14,11 @@ Habit.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Please enter your habit",
+        },
+      },
     },
     description: {
       type: DataTypes.STRING,
