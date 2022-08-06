@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { Habit } = require("../models");
+// const { Model } = require("sequelize/types");
+const { Habit, User, Entry } = require("../models");
 const helpers = require("../utils/helpers")
 
 router.get('/', async(req, res) => {
@@ -46,6 +47,32 @@ router.get('/users', async (req, res) => {
         days: test
     })
 })
+
+router.get("/users/:id", async (req, res) => {
+    try{
+        const userData = await User.findByPk(req.params.id, {
+            include: [{ model: Habit, 
+                include: [{ model: Entry }] }]
+          });
+   
+
+          const user = userData.get({plain: true})
+    
+
+        //   console.log(userData)
+          console.log(user)
+    
+        res.render('user', {
+            user: user.habits
+            // ...habity
+        })
+    
+    
+    } catch(err) {
+        res.status(500).json(err)
+    }
+  });
+  
 
 
 router.get('/stack', async (req, res) => {
