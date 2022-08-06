@@ -46,6 +46,13 @@ router.get('/users', async (req, res) => {
     })
 })
 
+router.get('stack', async (req, res) => {
 
+    
+
+    res.render('dailyStack', {
+
+    })
+})
 
 module.exports = router;
