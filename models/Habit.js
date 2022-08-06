@@ -14,12 +14,17 @@ Habit.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Please enter your habit",
+        },
+      },
     },
     description: {
       type: DataTypes.STRING,
     },
-    user_id: {
-      type: DataTypes.UUID,
+    userId: {
+      type: DataTypes.INTEGER,
       references: {
         model: "user",
         key: "id",
