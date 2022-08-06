@@ -1,8 +1,9 @@
  <section class="stack" id="stack">
             <h2>Today's Stack</h2>
             <div class="horiz-scroll">
+            {{#each habitData as |habit |}}
                 <div class="card">
-                    <h3>50 Push Ups</h3>
+                    <h3>{{habit.name}}</h3>
                     <div class="row">
                         <div class="slot"></div>
                         <div class="slot"></div>
@@ -13,6 +14,8 @@
                         <div class="slot"></div>
                     </div>
                     <div class="habit-info">
+                        <p>{{habit.description}}</p>
+                        <br>
                         <p>Goal: 5 days/week</p>
                         <p>This week: 1/2</p>
                         <p>Current streak: 10 days</p>
@@ -23,91 +26,35 @@
                         <button class="skip">skip</button>
                         <button class="yes">y</button>
                     </div>
+                        
                 </div>
-                <div class="card">
-                    <h3>Walk the Dog</h3>
-                    <div class="row">
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                    </div>
-                    <p>Goal: 5 days/week</p>
-                    <p>This week: 1/2</p>
-                    <p>Current streak: 10 days</p>
-                    <p>Tags: <a href="">#health</a> <a href="">#discipline</a> <a href="">#family</a>  </p>
-                    <div class="actions">
-                        <button class="no">x</button>
-                        <button class="skip">skip</button>
-                        <button class="yes">y</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>Walk the Dog</h3>
-                    <div class="row">
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                    </div>
-                    <p>Goal: 5 days/week</p>
-                    <p>This week: 1/2</p>
-                    <p>Current streak: 10 days</p>
-                    <p>Tags: <a href="">#health</a> <a href="">#discipline</a> <a href="">#family</a>  </p>
-                    <div class="actions">
-                        <button class="no">x</button>
-                        <button class="skip">skip</button>
-                        <button class="yes">y</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>Walk the Dog</h3>
-                    <div class="row">
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                    </div>
-                    <p>Goal: 5 days/week</p>
-                    <p>This week: 1/2</p>
-                    <p>Current streak: 10 days</p>
-                    <p>Tags: <a href="">#health</a> <a href="">#discipline</a> <a href="">#family</a>  </p>
-                    <div class="actions">
-                        <button class="no">x</button>
-                        <button class="skip">skip</button>
-                        <button class="yes">y</button>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>Walk the Dog</h3>
-                    <div class="row">
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                        <div class="slot"></div>
-                    </div>
-                    <p>Goal: 5 days/week</p>
-                    <p>This week: 1/2</p>
-                    <p>Current streak: 10 days</p>
-                    <p>Tags: <a href="">#health</a> <a href="">#discipline</a> <a href="">#family</a>  </p>
-                    <div class="actions">
-                        <button class="no">x</button>
-                        <button class="skip">skip</button>
-                        <button class="yes">y</button>
-                    </div>
-                </div>
+           {{/each}}
     
             </div>
         </section>
+
+
+        <script>
+            const yeah = document.getElementsByClassName("yes")
+            const nope = document.getElementsByClassName("no")
+            console.log(yeah[0])
+
+            for (let i = 0; i < yeah.length; i++){
+                yeah[i].addEventListener('click', (e) => {
+                    e.target.parentElement.parentElement.setAttribute("style", "transform: translate(100vw);")
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 5000)
+                })
+            }
+         
+            for (let i = 0; i < nope.length; i++){
+                nope[i].addEventListener('click', (e) => {
+                    e.target.parentElement.parentElement.setAttribute("style", "transform: translate(-100vw);")
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 5000)
+                })
+            }
+         
+
+
+
+
+        </script>
