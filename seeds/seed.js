@@ -8,12 +8,14 @@ const seedDatabase = async () => {
   await sequelize.sync({ force: true });
   console.log("All models were synchronized successfully.");
 
-  const users = await User.bulkCreate(userData, {
+  await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
   });
 
-  process.exit(0);
+  await Habit.bulkCreate(habitData, {
+    returning: true,
+  });
 };
 
 seedDatabase();
