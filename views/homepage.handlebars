@@ -1,43 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/style.css">
-    <script src="https://kit.fontawesome.com/1939b32d5e.js" crossorigin="anonymous"></script>
-    <title>Document</title>
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="title">Habit Stack</div>
-
-            <ul>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Login</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-
-        <section class="hero">
+ <section class="hero" id="home">
             <article class="hero-text">
                 <h1>Habit Stack</h1>
                 <p>A simple tool to help you build habits that stick through reminder, repetition, and celebration.</p>
             </article>
-            <button>Sign up now!</button>
+
+        <button id="signup">Sign up now!</button>
+
+        
         </section>
 
 
-        <section class="hero-2">
+        <section class="hero-2" id="stacks">
             <div class="bg"></div>
             <article class="hero-text">
                 <h2>Your Stack</h2>
@@ -72,7 +45,7 @@
                 <div class="slot"></div>
                 <div class="slot"></div>
             </div>
-            <button>Add new habit</button>
+            <button id="new_habit">Add new habit</button>
             <article class="hero-text">
                 <h2>Your Reports</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, ipsam.</p>
@@ -89,6 +62,38 @@
             <div class="horiz-scroll">
                 <div class="card">
                     <h3>50 Push Ups</h3>
+                    <div class="row">
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                    </div>
+                    <div class="habit-info">
+                        <p>Goal: 5 days/week</p>
+                        <p>This week: 1/2</p>
+                        <p>Current streak: 10 days</p>
+                        <p>Tags: <a href="">#health</a> <a href="">#discipline</a> <a href="">#family</a>  </p>
+                    </div>
+                    <div class="actions">
+                        <button class="no">x</button>
+                        <button class="skip">skip</button>
+                        <button class="yes">y</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Walk the Dog</h3>
+                    <div class="row">
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                    </div>
                     <p>Goal: 5 days/week</p>
                     <p>This week: 1/2</p>
                     <p>Current streak: 10 days</p>
@@ -101,6 +106,15 @@
                 </div>
                 <div class="card">
                     <h3>Walk the Dog</h3>
+                    <div class="row">
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                    </div>
                     <p>Goal: 5 days/week</p>
                     <p>This week: 1/2</p>
                     <p>Current streak: 10 days</p>
@@ -113,6 +127,15 @@
                 </div>
                 <div class="card">
                     <h3>Walk the Dog</h3>
+                    <div class="row">
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                    </div>
                     <p>Goal: 5 days/week</p>
                     <p>This week: 1/2</p>
                     <p>Current streak: 10 days</p>
@@ -125,6 +148,15 @@
                 </div>
                 <div class="card">
                     <h3>Walk the Dog</h3>
+                    <div class="row">
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                    </div>
                     <p>Goal: 5 days/week</p>
                     <p>This week: 1/2</p>
                     <p>Current streak: 10 days</p>
@@ -135,45 +167,24 @@
                         <button class="yes">y</button>
                     </div>
                 </div>
-                <div class="card">
-                    <h3>Walk the Dog</h3>
-                    <p>Goal: 5 days/week</p>
-                    <p>This week: 1/2</p>
-                    <p>Current streak: 10 days</p>
-                    <p>Tags: <a href="">#health</a> <a href="">#discipline</a> <a href="">#family</a>  </p>
-                    <div class="actions">
-                        <button class="no">x</button>
-                        <button class="skip">skip</button>
-                        <button class="yes">y</button>
-                    </div>
-                </div>
+    
             </div>
         </section>
 
+        <script>
+            const signup = document.getElementById('signup')
+const new_habit = document.getElementById('new_habit')
 
-        <section class="add-habit">
-            <article class="">
-                <div class="card-title">
-                    <h4>Add new habit to stack</h4>
+signup.addEventListener('click', () => {
 
-                     <form action="post">
+    location.assign('/register')
+})
 
-                            <div class="ad-lib-copy">
-                                <span>I will</span> <input type="text" placeholder="habit"/>  <select width=""><option>Weekly</option></select>.
-                                <span>I want to get a reminder</span> <input type="text" placeholder="mornings"  /><span>twice a day</span>
-                            </div>
-                     </form>
-
-                </div>
-                    </article>
-        </section>
+new_habit.addEventListener('click', () => {
 
 
-    </main>
-    <footer>
-        <ul>
-            <li>This is our placeholder footer</li>
-        </ul>
-    </footer>
-</body>
-</html>
+    location.assign('/new')
+})
+
+
+        </script>

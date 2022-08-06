@@ -1,0 +1,47 @@
+
+
+        <section class="hero" id="login">
+            <form action="#">
+                <div class="ribbon">
+                    <h4>ADD NEW HABIT</h4>
+                </div>
+
+                <div class="ig topper">
+                    <label for="name">Habit name:</label>
+                    <input type="text" name="habit_name" id="habit_name">
+                </div>
+
+
+
+                <div class="ig">
+                    <label for="name">Frequency:</label>
+                    <input type="range" list='freq' min="1" max="7" step="1" name="frequency" id="frequency">
+                </div>
+
+
+
+
+                <datalist id="freq">
+                    <option value="1" label="1"></option>
+                    <option value="2" label="2"></option>
+                    <option value="3" label="3"></option>
+                    <option value="4" label="4"></option>
+                    <option value="5" label="5"></option>
+                    <option value="6" label="6"></option>
+                    <option value="7" label="7"></option>
+                    </datalist>
+
+
+                    <div class="ig col">
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" rows="4" cols="50">Describe the habit you'd like to establish
+                        </textarea>
+                    </div>
+
+
+                <button type="submit">Submit</button>
+            </form>
+
+        </section>
+
+

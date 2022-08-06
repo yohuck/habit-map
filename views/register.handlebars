@@ -1,0 +1,39 @@
+
+        <section class="hero" id="login">
+            <form action="#">
+                <div class="ig">
+                    <label for="fname">First:</label>
+                    <input type="text" name="fname" id="fname">
+                </div>
+                <div class="ig">
+                    <label for="lname">Last:</label>
+                    <input type="text" name="lname" id="lname">
+                </div>
+                <div class="ig">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="email">
+                </div>
+                <div class="ig">
+                    <label for="phone">Phone:</label>
+                    <input type="text" name="phone" id="phone">
+                </div>
+                <div class="ig">
+                    <label for="pw">Password:</label>
+                    <input type="password" name="pw" id="pw">
+                </div>
+                <div class="ig">
+                    <label for="opt">Allow text reminders</label>
+                    <input type="checkbox" name="opt" id="opt">
+                </div>
+                <button id="create_account">Create Account</button>
+            </form>
+        </section>
+
+
+<script>
+    const create_account = document.getElementById('create_account')
+    .addEventListener('click', (e) => {
+        e.preventDefault()
+        location.assign('/login')
+    })
+</script>
