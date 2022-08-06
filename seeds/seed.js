@@ -13,9 +13,13 @@ const seedDatabase = async () => {
     returning: true,
   });
 
+
   await Habit.bulkCreate(habitData, {
     returning: true,
   });
+
+  process.exit(0);
+
 };
 
 seedDatabase();
