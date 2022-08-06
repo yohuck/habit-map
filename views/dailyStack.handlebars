@@ -14,7 +14,8 @@
                         <div class="slot"></div>
                     </div>
                     <div class="habit-info">
-                        {{habit.description}}
+                        <p>{{habit.description}}</p>
+                        <br>
                         <p>Goal: 5 days/week</p>
                         <p>This week: 1/2</p>
                         <p>Current streak: 10 days</p>
@@ -31,3 +32,29 @@
     
             </div>
         </section>
+
+
+        <script>
+            const yeah = document.getElementsByClassName("yes")
+            const nope = document.getElementsByClassName("no")
+            console.log(yeah[0])
+
+            for (let i = 0; i < yeah.length; i++){
+                yeah[i].addEventListener('click', (e) => {
+                    e.target.parentElement.parentElement.setAttribute("style", "transform: translate(100vw);")
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 5000)
+                })
+            }
+         
+            for (let i = 0; i < nope.length; i++){
+                nope[i].addEventListener('click', (e) => {
+                    e.target.parentElement.parentElement.setAttribute("style", "transform: translate(-100vw);")
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 5000)
+                })
+            }
+         
+
+
+
+
+        </script>
