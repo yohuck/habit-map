@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { Habit } = require("../models");
 const helpers = require("../utils/helpers")
 
 router.get('/', async(req, res) => {
@@ -46,13 +47,29 @@ router.get('/users', async (req, res) => {
     })
 })
 
-router.get('stack', async (req, res) => {
 
-    
+router.get('/stack', async (req, res) => {
+try{
+    const habitData = await Habit.findAll({
+        raw: true
+    })
+
+    console.log(habitData)
+
+
+    // const habity = habitData.get({plain: true})
+
 
     res.render('dailyStack', {
-
+        habitData
+        // ...habity
     })
+
+
+} catch(err) {
+    res.status(500).json(err)
+}
+
 })
 
 module.exports = router;
