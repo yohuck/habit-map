@@ -9,4 +9,15 @@ router.get("/", async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+router.post("/", (req, res) => {
+  Entry.create(req.body)
+    .then((newEntry) => {
+      res.json(newEntry);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
 module.exports = router;
