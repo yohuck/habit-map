@@ -58,7 +58,7 @@ nav ul li{
     list-style: none;
 }
 
-nav ul li a{
+nav  a{
     text-decoration: none;
     color: var(--bg-color);
     font-size: clamp(0.8rem, calc(0.8rem + 1vw), 1.4rem);

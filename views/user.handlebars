@@ -48,6 +48,7 @@
 </div> --}}
    
             <button id="new_habit">Add new habit</button>
+            <button id="stacker">Stack em!</button>
             <article class="hero-text">
                 <h2>Your Reports</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, ipsam.</p>
@@ -62,13 +63,12 @@
 
      
 const new_habit = document.getElementById('new_habit')
-
-
-
 new_habit.addEventListener('click', () => {
-
-
     location.assign('/new')
+})
+const stacker = document.getElementById('stacker')
+stacker.addEventListener('click', () => {
+    location.assign('/stack')
 })
 
 </script>

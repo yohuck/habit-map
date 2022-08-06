@@ -11,7 +11,16 @@
                     <label for="pw">Password:</label>
                     <input type="password" name="pw" id="pw">
                 </div>
-                <button type="submit">Login</button>
+                <button id="loginButton">Login</button>
             </form>
-
+                   
         </section>
+
+<script>
+    const login = document.getElementById('loginButton')
+    .addEventListener('click', (e) => {
+        console.log('helloi')
+        e.preventDefault()
+        location.assign('/users/1')
+    })
+</script>
