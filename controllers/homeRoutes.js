@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const withAuth = require('../utils/auth');
 // const { Model } = require("sequelize/types");
 const { Habit, User, Entry } = require("../models");
 const helpers = require("../utils/helpers")
@@ -63,7 +64,9 @@ router.get("/users/:id", async (req, res) => {
           console.log(user)
     
         res.render('user', {
-            user: user.habits
+            user: user,
+            habits: user.habits,
+            entries: user.habits.entries
             // ...habity
         })
     

@@ -210,6 +210,7 @@ h1{
 .hero-text{
     max-width: 90%;
     margin: 0 auto;
+    margin-top: 2rem;
 }
 
 article{
@@ -510,6 +511,6 @@ label{
 
 
 .habit_descrip{
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 400px;
+    margin: 0rem auto;
 }

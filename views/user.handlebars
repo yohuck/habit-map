@@ -1,7 +1,7 @@
        <section class="hero-2" id="stacks">
             <div class="bg"></div>
             <article class="hero-text">
-               <h2>Your Stack</h2>
+               <h2>{{user.first_name}}'s Stack</h2>
             
                
             </article>
@@ -9,20 +9,33 @@
 
 
 
-            {{#each user as |habit|}}
-            <p class="habit_descrip">{{habit.description}}</p>
+            {{#each habits as |habit|}}
+                
             <div class="row">
                 <h5>{{habit.name}}</h5>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
+                {{#each entries as |entry| }}
+                
+                    <div class="slot"></div>
+                {{/each}}
+                {{!-- {{#each entry}}
+                <div class="slot">{{../user}}{{completed}}</div>
+                {{/entry}} --}}
+{{!-- 
+            {{#each entry}}
+ 
+            <p>Hello</p>
+            {{/each}} --}}
+       
             </div>
-            {{/each}}
 
+            <p class="habit_descrip">{{habit.description}}</p>
+            <br>
+
+            {{/each}}
+            
+
+            {{!-- {{#each habits}}
+            {{/each}} --}}
 
 {{!-- <div class="row">
     <h5>Dynamically created!</h5>
@@ -44,3 +57,18 @@
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum esse placeat at quia praesentium natus dicta veniam necessitatibus magni, ipsum magnam, provident reiciendis voluptatibus, enim dolores? </p>
             </article>
         </section> 
+
+        <script>
+
+     
+const new_habit = document.getElementById('new_habit')
+
+
+
+new_habit.addEventListener('click', () => {
+
+
+    location.assign('/new')
+})
+
+</script>
