@@ -13,6 +13,11 @@ const seedDatabase = async () => {
     returning: true,
   });
 
+  const habits = await Habit.bulkCreate(habitData, {
+    individualHooks: true,
+    returning: true,
+  })
+
   process.exit(0);
 };
 
