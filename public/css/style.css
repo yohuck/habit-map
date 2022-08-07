@@ -260,7 +260,7 @@ footer li{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition-duration: 1s;
+    transition-duration: 1.5s;
     transition-property: transform;
 }
 
