@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Habit, Entry } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 //getting all userData
 router.get("/", async (req, res) => {
@@ -39,12 +40,20 @@ router.post("/", async (req, res) => {
 
     // Set up sessions with a 'loggedIn' variable set to `true`
     req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.email = userData.email;
+      req.body.first_name = userData.first_name;
+      req.body.last_name = userData.last_name;
+      req.body.password = userData.password;
       req.session.loggedIn = true;
 
-      res.status(200).json(userData);
+      res.status(200).json({
+        user: userData,
+        message: "New user created. You are now logged in!",
+      });
     });
-  } catch (err) {
-    res.status(400).json(err);
+  } catch (error) {
+    res.status(400).json({ message: `An ${error} has occured.` });
   }
 });
 
@@ -69,15 +78,16 @@ router.post("/login", async (req, res) => {
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.email = userData.email;
       req.session.loggedIn = true;
 
       res
         .status(200)
         .json({ user: userData, message: "You are now logged in!" });
     });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: `An ${error} has occured.` });
   }
 });
 
@@ -93,25 +103,21 @@ router.post("/logout", (req, res) => {
   }
 });
 
-//PUT OR UPDATE route by user id
-
 //DELETE route for a specific user id
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.destroy({
       where: {
         id: req.params.id,
       },
     });
-
     if (!userData) {
-      res.status(404).json({ message: "No user found with that id!" });
+      res.status(404).json({ message: "No user found with that id." });
       return;
     }
-
-    res.status(200).json(userData);
-  } catch (err) {
-    res.status(500).json(err);
+    res.status(200).json(`User was successfully deleted.`);
+  } catch (error) {
+    res.status(500).json({ message: `An ${error} has occured.` });
   }
 });
 
