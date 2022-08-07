@@ -136,9 +136,9 @@ button{
 }
 
 .slot{
-    width: clamp(5px, calc(5px + 2vw), 40px);
+    width: clamp(5px, calc(5px + 2vw), 35px);
     background-color: var(--accent);
-    height: clamp(5px, calc(5px + 2vw), 40px);
+    height: clamp(5px, calc(5px + 2vw), 35px);
     margin: 0.2rem 0.2rem;
     box-shadow: 3px 3px rgb(40, 48, 49);
 }
@@ -250,6 +250,7 @@ footer li{
     transform: (translateX(-50%)); 
     width: 90%;
     max-width: 350px;
+    height: 400px;
     text-align: center;
     margin: 0rem auto;
     border: 2px solid black;
@@ -258,6 +259,7 @@ footer li{
     background-color: var(--bg-color);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     transition-duration: 1s;
     transition-property: transform;
 }
@@ -514,3 +516,8 @@ label{
     max-width: 400px;
     margin: 0rem auto;
 }
+
+.yes{
+    position: relative;
+}
+

@@ -29,32 +29,66 @@
                         
                 </div>
            {{/each}}
+
+                <div class="card">
+                    <h3 id="greatJob"></h3>
+                    <br>
+                    <p>High five! 🙏 That's it for now. Go scroll TikTok or something.</p>
+                    <p></p>
+                    <button >Your Profile</button>
+
+                        
+                </div>
     
             </div>
         </section>
 
 
         <script>
-            const yeah = document.getElementsByClassName("yes")
-            const nope = document.getElementsByClassName("no")
-            console.log(yeah[0])
+            const yeah = document.getElementsByClassName("yes");
+            const nope = document.getElementsByClassName("no");
+            const skippy = document.getElementsByClassName("skip")
 
+       
             for (let i = 0; i < yeah.length; i++){
                 yeah[i].addEventListener('click', (e) => {
                     e.target.parentElement.parentElement.setAttribute("style", "transform: translate(100vw);")
-                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 5000)
-                })
+                    e.target.innerHTML=happyFunc()
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 1000)
+                });
             }
-         
             for (let i = 0; i < nope.length; i++){
                 nope[i].addEventListener('click', (e) => {
                     e.target.parentElement.parentElement.setAttribute("style", "transform: translate(-100vw);")
+                    e.target.innerHTML=sadFunc()
                     setTimeout(() => {e.target.parentElement.parentElement.remove()}, 5000)
-                })
+                });
             }
-         
+
+            for (let i = 0; i < skippy.length; i++){
+                skippy[i].addEventListener('click', (e) => {
+                    e.target.parentElement.parentElement.setAttribute("style", "transform: translate(-100vw);")
+                    e.target.innerHTML=`🤔`
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 5000)
+                });
+            }
+
+            const greatJobFunc = () => {
+                const messages = ['Nice work', 'You crushed it!', "Look at you go", "Oh heck yeah", "Big up"]
+                return messages[Math.floor(Math.random() * messages.length)]
+            }
+            const happyFunc = () => {
+                const choices = ["❤️", "🔥", "🤩", "🎉", "💪", "🍾", "🚀"]
+                return choices[Math.floor(Math.random() * choices.length)]
+            }
+            const sadFunc = () => {
+                const choices = ["🤬", "😣", "🤮", "🚩", "💀", "😨"]
+                return choices[Math.floor(Math.random() * choices.length)]
+            }
 
 
+            const greatJob = document.getElementById('greatJob');
+            greatJob.innerHTML=`${greatJobFunc()}!`
 
 
         </script>
