@@ -521,3 +521,8 @@ label{
     position: relative;
 }
 
+#error{
+    width: 90%;
+    margin: 1rem auto;
+    color:#ca0c0c;
+}

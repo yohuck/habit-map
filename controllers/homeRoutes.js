@@ -11,15 +11,18 @@ router.get('/', async(req, res) => {
 })
 
 router.get('/login', async (req, res) => {
-    // if (req.session.logged_in){
-    //     res.redirect('/profile')
-    //     return
-    // }
+    
+    if (req.session.logged_in){
+        res.redirect('/users/1')
+        return
+    }
 
     res.render('login', {
 
     })
 })
+
+
 
 
 router.get('/register', async (req, res) => {
@@ -52,6 +55,7 @@ router.get('/users', async (req, res) => {
 router.get("/users/:id", async (req, res) => {
     try{
         const userData = await User.findByPk(req.params.id, {
+            attributes: {exclude: ['password']},
             include: [{ model: Habit, 
                 include: [{ model: Entry }] }]
           });
