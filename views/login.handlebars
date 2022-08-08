@@ -1,7 +1,7 @@
 
         <section class="hero" id="login">
             <form action="#">
-
+                <div id="error"></div>
                 <div class="ig">
                     <label for="email">Email:</label>
                     <input type="text" name="email" id="email">
@@ -17,10 +17,77 @@
         </section>
 
 <script>
-    const login = document.getElementById('loginButton')
-    .addEventListener('click', (e) => {
-        console.log('helloi')
+    {{!-- const login = document.getElementById('loginButton')
+    .addEventListener('click', async function(e) {
         e.preventDefault()
         location.assign('/users/1')
-    })
+    }) --}}
+
+    const loginFormHandler = async e => {
+        e.preventDefault()
+        email = document.getElementById('email').value.trim()
+        password = document.getElementById('pw').value.trim()
+
+        console.table(email, password)
+
+        if (email && password) {
+            response = await fetch('/api/users/login', {
+                method: 'POST',
+                body: JSON.stringify({email, password}),
+                headers: {'Content-Type': 'application/json'},
+            });
+
+        console.log('helloooo')
+
+        if (response.ok){
+            console.log('here>??????')
+            document.location.replace('/users/1')
+        }
+        }
+
+    }
+
+
+    const loginButton = document.getElementById('loginButton').addEventListener('click', loginFormHandler)
+
+
+
+
+
+
 </script>
+
+
+{{!-- 
+router.post("/login", async (req, res) => {
+  try {
+    const userData = await User.findOne({ where: { email: req.body.email } });
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password, please try again" });
+      return;
+    }
+    // validating the password
+    const validPassword = await userData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: "Incorrect email or password, please try again" });
+      return;
+    }
+    // Once the user successfully logs in, set up the sessions variable 'loggedIn'
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.email = userData.email;
+      req.session.loggedIn = true;
+
+      res
+        .status(200)
+        .json({ user: userData, message: "You are now logged in!" });
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: `An ${error} has occured.` });
+  }
+}); --}}
