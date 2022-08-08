@@ -60,13 +60,13 @@ User.init(
         len: [8],
       },
     },
-    // phone_number: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: true,
-    //   validate: {
-    //     isInt: true,
-    //   },
-    // },
+    phone_number: {
+      type: DataTypes.STRING,
+      // allowNull: true,
+      // validate: {
+      //   isInt: true,
+      // },
+    },
   },
   {
     hooks: {

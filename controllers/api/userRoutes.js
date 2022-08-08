@@ -36,15 +36,16 @@ router.post("/", async (req, res) => {
       last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password,
+      phone_number: req.body.phone_number,
     });
 
     // Set up sessions with a 'loggedIn' variable set to `true`
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.email = userData.email;
-      req.body.first_name = userData.first_name;
-      req.body.last_name = userData.last_name;
-      req.body.password = userData.password;
+      req.session.first_name = userData.first_name;
+      req.session.last_name = userData.last_name;
+      req.session.password = userData.password;
       req.session.loggedIn = true;
 
       res.status(200).json({
