@@ -17,18 +17,13 @@
         </section>
 
 <script>
-    {{!-- const login = document.getElementById('loginButton')
-    .addEventListener('click', async function(e) {
-        e.preventDefault()
-        location.assign('/users/1')
-    }) --}}
+
 
     const loginFormHandler = async e => {
         e.preventDefault()
         email = document.getElementById('email').value.trim()
         password = document.getElementById('pw').value.trim()
 
-        console.table(email, password)
 
         if (email && password) {
             response = await fetch('/api/users/login', {
@@ -37,12 +32,17 @@
                 headers: {'Content-Type': 'application/json'},
             });
 
-        console.log('helloooo')
 
-        if (response.ok){
-            console.log('here>??????')
-            document.location.replace('/users/1')
-        }
+
+            if (response.ok){
+                console.log(response)
+                const responseData = await response.json()
+                const user_id = responseData.user.id
+                document.location.replace(`/users/${user_id}`)
+            } else {
+                const errorSlot = document.getElementById('error')
+                errorSlot.textContent = "Incorrect email address or password. Please try again"
+            }
         }
 
     }
