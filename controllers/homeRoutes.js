@@ -52,7 +52,7 @@ router.get('/users', async (req, res) => {
     })
 })
 
-router.get("/users/:id", async (req, res) => {
+router.get("/users/:id", withAuth, async (req, res) => {
     try{
         const userData = await User.findByPk(req.params.id, {
             attributes: {exclude: ['password']},
