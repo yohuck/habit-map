@@ -12,8 +12,8 @@ router.get('/', async(req, res) => {
 
 router.get('/login', async (req, res) => {
     
-    if (req.session.logged_in){
-        res.redirect('/users/1')
+    if (req.session.loggedIn){
+        res.redirect(`/users/${req.session.user_id}`)
         return
     }
 
