@@ -49,7 +49,8 @@
         
  const newHabitFormHandler = async e => {
         e.preventDefault()
-        const userId = window.location.pathname.split('')[7]
+        const userId = window.location.pathname.split('/')[2]
+        console.log(userId)
         const name = document.getElementById('habit_name').value.trim()
         const description = document.getElementById('description').value.trim()
         const frequency = document.getElementById('freq').value

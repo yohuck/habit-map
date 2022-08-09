@@ -63,7 +63,7 @@
 
      
 const new_habit = document.getElementById('new_habit')
-const userNum = window.location.pathname.split('')[7]
+const userNum = window.location.pathname.split('/')[2]
 
 new_habit.addEventListener('click', () => {
     location.assign(`/users/${userNum}/new`)
