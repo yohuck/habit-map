@@ -23,7 +23,7 @@ Habit.init(
     },
     description: {
       type: DataTypes.STRING,
-      unique: falseI m,
+      unique: false,
     },
     userId: {
       type: DataTypes.INTEGER,
