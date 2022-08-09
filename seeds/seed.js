@@ -1,4 +1,4 @@
-const sequelize = require("../config/connection");
+const {sequelize} = require("../config/connection");
 const { User, Habit, Entry } = require("../models");
 
 const userData = require("./userData.json");

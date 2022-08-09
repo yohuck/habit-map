@@ -2,61 +2,61 @@
   {
     "date": "2022-08-01",
     "completed": true,
-    "habitId": 1
+    "habit_id": 1
   },
   {
     "date": "2022-08-01",
     "completed": false,
-    "habitId": 2
+    "habit_id": 2
   },
   {
     "date": "2022-08-01",
     "completed": false,
-    "habitId": 3
+    "habit_id": 3
   },
   {
     "date": "2022-08-02",
     "completed": false,
-    "habitId": 1
+    "habit_id": 1
   },
   {
     "date": "2022-08-02",
     "completed": true,
-    "habitId": 2
+    "habit_id": 2
   },
   {
     "date": "2022-08-02",
     "completed": true,
-    "habitId": 3
+    "habit_id": 3
   },
   {
     "date": "2022-08-03",
     "completed": false,
-    "habitId": 1
+    "habit_id": 1
   },
   {
     "date": "2022-08-03",
     "completed": true,
-    "habitId": 2
+    "habit_id": 2
   },
   {
     "date": "2022-08-03",
     "completed": true,
-    "habitId": 3
+    "habit_id": 3
   },
   {
     "date": "2022-08-04",
     "completed": false,
-    "habitId": 1
+    "habit_id": 1
   },
   {
     "date": "2022-08-04",
     "completed": true,
-    "habitId": 2
+    "habit_id": 2
   },
   {
     "date": "2022-08-05",
     "completed": true,
-    "habitId": 2
+    "habit_id": 2
   }
 ]
