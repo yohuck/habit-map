@@ -5,7 +5,9 @@ const withAuth = require("../../utils/auth");
 //getting all habitData
 router.get("/", withAuth, async (req, res) => {
   try {
-    const habitData = await Habit.findAll();
+    const habitData = await Habit.findAll({
+      include: [{ model: Entry }],
+    });
     res.status(200).json(habitData);
   } catch (error) {
     res.status(400).json({ message: `An ${error} has occured.` });
