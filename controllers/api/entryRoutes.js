@@ -12,10 +12,24 @@ router.get("/", async (req, res) => {
   }
 });
 
-//  Add an entry
-router.post("/", (req, res) => {
+//  Get an entry by ID
+router.get("/:id", async (req, res) => {
   try {
-    const newEntry = Entry.create({
+    const entryData = await Entry.findByPk(req.params.id);
+    if (!entryData) {
+      res.status(404).json({ message: "No entry with this id." });
+      return;
+    }
+    res.status(200).json(entryData);
+  } catch (error) {
+    res.status(500).json({ message: `An ${error} has occured.` });
+  }
+});
+
+//  Add an entry
+router.post("/", async (req, res) => {
+  try {
+    const newEntry = await Entry.create({
       date: req.body.date,
       completed: req.body.completed,
       habitId: req.body.habitId,
@@ -24,29 +38,13 @@ router.post("/", (req, res) => {
   } catch (error) {
     res.status(400).json({ message: `An ${error} has occurred.` });
   }
-  // .then((newEntry) => {
-  //   res.json(newEntry);
-  // })
-  // .catch((err) => {
-  //   res.json(err);
-  // });
+  //   .then((newEntry) => {
+  //     res.json(newEntry);
+  //   })
+  //   .catch((err) => {
+  //     res.json(err);
+  //   });
 });
-
-// //  Create an entry 2nd method -- possible
-// router.post("/", (req, res) => {
-//   Entry.create({
-//     id: req.body.id,
-//     date: req.body.date,
-//     completed: BOOLEAN,
-//     habitId: DataTypes.INTEGER,
-//   })
-//     .then((newEntry) => {
-//       res.json(newEntry);
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//     });
-// });
 
 //  Update an entry for a specific ID
 router.put("/:id", async (req, res) => {
@@ -83,73 +81,6 @@ router.delete("/:id", async (req, res) => {
     res.status(200).json({ message: `Entry successfully deleted.` });
   } catch (error) {
     res.status(500).json({ message: `An ${error} has occurred.` });
-  }
-});
-
-module.exports = router;
-
-//  Add an entry
-router.post("/", (req, res) => {
-  Entry.create(req.body)
-    .then((newEntry) => {
-      res.json(newEntry);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
-
-// //  Create an entry 2nd method -- possible
-// router.post("/", (req, res) => {
-//   Entry.create({
-//     id: req.body.id,
-//     date: req.body.date,
-//     completed: BOOLEAN,
-//     habitId: DataTypes.INTEGER,
-//   })
-//     .then((newEntry) => {
-//       res.json(newEntry);
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//     });
-// });
-
-//  Update an entry
-router.put("/:id", async (req, res) => {
-  try {
-    const entryData = await Entry.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!entryData[0]) {
-      res.status(404).json({
-        message: "There is no entry that matches that ID!  Please try again.",
-      });
-      return;
-    }
-    res.status(200).json(entryData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-//  Delete an entry
-router.delete("/:id", async (req, res) => {
-  try {
-    const entryData = await Entry.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!entryData) {
-      res.status(404).json({ message: "No entry with this id!" });
-      return;
-    }
-    res.status(200).json(entryData);
-  } catch (err) {
-    res.status(500).json(err);
   }
 });
 
