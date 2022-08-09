@@ -25,7 +25,7 @@ Habit.init(
       type: DataTypes.STRING,
       unique: false,
     },
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "user",
