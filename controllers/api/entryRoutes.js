@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { response } = require("express");
 const { BOOLEAN, DataTypes } = require("sequelize");
 const { Entry } = require("../../models");
 
@@ -14,13 +15,22 @@ router.get("/", async (req, res) => {
 
 //  Add an entry
 router.post("/", (req, res) => {
-  Entry.create(req.body)
-    .then((newEntry) => {
-      res.json(newEntry);
-    })
-    .catch((err) => {
-      res.json(err);
+  try {
+    const newEntry = Entry.create({
+      date: req.body.date,
+      completed: req.body.completed,
+      habitId: req.body.habitId,
     });
+    res.status(200).json({ message: `A new entry was completed.` });
+  } catch (error) {
+    res.status(400).json({ message: `An ${error} has occurred.` });
+  }
+  // .then((newEntry) => {
+  //   res.json(newEntry);
+  // })
+  // .catch((err) => {
+  //   res.json(err);
+  // });
 });
 
 // //  Create an entry 2nd method -- possible
@@ -40,7 +50,7 @@ router.post("/", (req, res) => {
 // });
 
 //  Update an entry for a specific ID
-router.put("/:id", withAuth, async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const entryData = await Entry.update(req.body, {
       where: {
