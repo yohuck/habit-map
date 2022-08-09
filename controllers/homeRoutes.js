@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const withAuth = require('../utils/auth');
 // const { Model } = require("sequelize/types");
 const { Habit, User, Entry } = require("../models");
 const helpers = require("../utils/helpers")
@@ -9,16 +10,34 @@ router.get('/', async(req, res) => {
     })
 })
 
+router.get('/logout', async (req, res) => {
+    
+    if (req.session.loggedIn){
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+        res.status(404).end();
+    }
+
+    res.render('homepage', {
+
+    })
+})
+
 router.get('/login', async (req, res) => {
-    // if (req.session.logged_in){
-    //     res.redirect('/profile')
-    //     return
-    // }
+    
+    if (req.session.loggedIn){
+        res.redirect(`/users/${req.session.user_id}`)
+        return
+    }
 
     res.render('login', {
 
     })
 })
+
+
 
 
 router.get('/register', async (req, res) => {
@@ -48,9 +67,10 @@ router.get('/users', async (req, res) => {
     })
 })
 
-router.get("/users/:id", async (req, res) => {
+router.get("/users/:id", withAuth, async (req, res) => {
     try{
         const userData = await User.findByPk(req.params.id, {
+            attributes: {exclude: ['password']},
             include: [{ model: Habit, 
                 include: [{ model: Entry }] }]
           });
@@ -63,7 +83,9 @@ router.get("/users/:id", async (req, res) => {
           console.log(user)
     
         res.render('user', {
-            user: user.habits
+            user: user,
+            habits: user.habits,
+            entries: user.habits.entries
             // ...habity
         })
     
