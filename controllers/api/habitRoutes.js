@@ -32,7 +32,7 @@ router.post("/", withAuth, async (req, res) => {
     const newHabit = await Habit.create({
       name: req.body.name,
       description: req.body.description,
-      user_id: req.body.user_id,
+      userId: req.body.user_id,
     });
     res.status(200).json({ message: `A new habit was successfully created.` });
   } catch (error) {
