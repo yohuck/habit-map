@@ -110,24 +110,21 @@ router.get("/users/:id/new", withAuth, async (req, res) => {
   
 
 
-router.get('/stack', async (req, res) => {
+router.get('/users/:id/stack', async (req, res) => {
 try{
     const habitData = await Habit.findAll({
+        where: {
+            user_id: req.params.id,
+        },
+
         raw: true
     })
 
     console.log(habitData)
 
+    // let habits = habitData.get({plain: true})
 
-    // const habity = habitData.get({plain: true})
-
-
-    res.render('dailyStack', {
-        habitData
-        // ...habity
-    })
-
-
+    res.render('dailyStack', {habitData})
 } catch(err) {
     res.status(500).json(err)
 }
