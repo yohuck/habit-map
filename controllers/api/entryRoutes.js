@@ -29,10 +29,18 @@ router.get("/:id", async (req, res) => {
 //  Add an entry
 router.post("/", async (req, res) => {
   try {
+    let test = {
+      date: req.body.date,
+      completed: req.body.completed,
+      habitId: req.body.habit_id
+    }
+    console.log('hellooooo')
+    console.log(test)
+
     const newEntry = await Entry.create({
       date: req.body.date,
       completed: req.body.completed,
-      habitId: req.body.habitId,
+      habitId: req.body.habit_id,
     });
     res.status(200).json({ message: `A new entry was completed.` });
   } catch (error) {

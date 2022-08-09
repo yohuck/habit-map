@@ -1,7 +1,7 @@
  <section class="stack" id="stack">
             <h2>Today's Stack</h2>
             <div class="horiz-scroll">
-            {{#each habitData as |habit |}}
+            {{#each habitData as | habit |}}
                 <div class="card">
                     <h3>{{habit.name}}</h3>
                     <div class="row">
@@ -21,7 +21,7 @@
                         <p>Current streak: 10 days</p>
                         <p>Tags: <a href="">#health</a> <a href="">#discipline</a> <a href="">#family</a>  </p>
                     </div>
-                    <div class="actions">
+                    <div class="actions" data-habitId="{{habit.id}}">
                         <button class="no">x</button>
                         <button class="skip">skip</button>
                         <button class="yes">y</button>
@@ -49,9 +49,39 @@
             const nope = document.getElementsByClassName("no");
             const skippy = document.getElementsByClassName("skip")
 
+            const createEntryHandler = async id => {
+                const nowy = new Date()
+
+                const dateToPass = `${nowy.getFullYear()}-0${nowy.getMonth()}-0${nowy.getDate()}`
+                let passObj = {
+                    date: dateToPass,
+                    completed: true,
+                    habit_id: Number(id),
+                }
+                
+                passObj = JSON.stringify(passObj)
+
+                console.log(passObj)
+
+                response = await fetch('/api/entries/', {
+                    method: 'POST',
+                    body: passObj,
+                    header: {'Content-Type' : 'application/json'}
+                });
+
+                if (response.ok){
+                    console.log('yayyy')
+                } else {
+                    console.log('nooooo')
+                }
+            }
+
        
             for (let i = 0; i < yeah.length; i++){
                 yeah[i].addEventListener('click', (e) => {
+                    let logid = e.target.parentElement.dataset.habitid
+                    createEntryHandler(logid)
+
                     e.target.parentElement.parentElement.setAttribute("style", "transform: translate(100vw);")
                     e.target.innerHTML=happyFunc()
                     setTimeout(() => {e.target.parentElement.parentElement.remove()}, 1000)

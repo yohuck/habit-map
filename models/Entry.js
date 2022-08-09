@@ -19,7 +19,7 @@ Entry.init(
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
-    habitId: {
+    habit_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "habit",
