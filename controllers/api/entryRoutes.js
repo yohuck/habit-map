@@ -12,8 +12,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-module.exports = router;
-
 //  Add an entry
 router.post("/", (req, res) => {
   Entry.create(req.body)
