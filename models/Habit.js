@@ -14,7 +14,7 @@ Habit.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: false,
       validate: {
         notNull: {
           msg: "Please enter your habit",
@@ -23,7 +23,7 @@ Habit.init(
     },
     description: {
       type: DataTypes.STRING,
-      unique: true,
+      unique: falseI m,
     },
     userId: {
       type: DataTypes.INTEGER,
