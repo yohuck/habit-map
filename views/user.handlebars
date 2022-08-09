@@ -63,8 +63,10 @@
 
      
 const new_habit = document.getElementById('new_habit')
+const userNum = window.location.pathname.split('')[7]
+
 new_habit.addEventListener('click', () => {
-    location.assign('/new')
+    location.assign(`/users/${userNum}/new`)
 })
 const stacker = document.getElementById('stacker')
 stacker.addEventListener('click', () => {
