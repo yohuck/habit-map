@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 //  Get an entry by ID
 router.get("/:id", async (req, res) => {
   try {
-    const entryData = await Habit.findByPk(req.params.id);
+    const entryData = await Entry.findByPk(req.params.id);
     if (!entryData) {
       res.status(404).json({ message: "No entry with this id." });
       return;
