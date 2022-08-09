@@ -39,9 +39,47 @@
                     </div>
 
 
-                <button type="submit">Submit</button>
+                <button type="submit" id="submit">Submit</button>
             </form>
 
         </section>
 
+    <script>
 
+        
+ const newHabitFormHandler = async e => {
+        e.preventDefault()
+        const userId = window.location.pathname.split('')[7]
+        const name = document.getElementById('habit_name').value.trim()
+        const description = document.getElementById('description').value.trim()
+        const frequency = document.getElementById('freq').value
+        if (name && description && userId) {
+            response = await fetch('/api/habits/', {
+                method: 'POST',
+                body: JSON.stringify({userId, name, description, frequency }),
+                headers: {'Content-Type': 'application/json'},
+            });
+            if (response.ok){
+                console.log('helllooo')
+                const responseData = await response.json()
+
+                document.location.replace(`/users/${userId}`)
+            } else {
+                const errorSlot = document.getElementById('error')
+                errorSlot.textContent = 'Something went wrong :('
+            }
+        }
+    }
+
+    const submit = document.getElementById('submit')
+    .addEventListener('click', newHabitFormHandler)
+
+
+
+
+
+
+
+
+
+    </script>
