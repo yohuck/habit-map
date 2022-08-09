@@ -74,14 +74,7 @@ router.get("/users/:id", withAuth, async (req, res) => {
             include: [{ model: Habit, 
                 include: [{ model: Entry }] }]
           });
-   
-
           const user = userData.get({plain: true})
-    
-
-        //   console.log(userData)
-          console.log(user)
-    
         res.render('user', {
             user: user,
             habits: user.habits,
@@ -89,6 +82,26 @@ router.get("/users/:id", withAuth, async (req, res) => {
             // ...habity
         })
     
+    } catch(err) {
+        res.status(500).json(err)
+    }
+  });
+
+router.get("/users/:id/new", withAuth, async (req, res) => {
+    try{
+        // const userData = await User.findByPk(req.params.id, {
+        //     attributes: {exclude: ['password']},
+        //     include: [{ model: Habit, 
+        //         include: [{ model: Entry }] }]
+        //   });
+        //   const user = userData.get({plain: true})
+        // res.render('user', {
+        //     user: user,
+        //     habits: user.habits,
+        //     entries: user.habits.entries
+        //     // ...habity
+        // })
+        res.render('new')
     
     } catch(err) {
         res.status(500).json(err)
