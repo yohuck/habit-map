@@ -17,10 +17,12 @@ const seedDatabase = async () => {
   const habits = await Habit.bulkCreate(habitData, {
     returning: true,
   });
+
   
    const entries = await Entry.bulkCreate(entryData, {
     returning: true,
   });
+
 
   process.exit(0);
 };
