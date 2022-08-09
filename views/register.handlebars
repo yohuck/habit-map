@@ -1,72 +1,55 @@
-
-        <section class="hero" id="login">
-            <div id="error"></div>
-            <form action="#">
-                <div class="ig">
-                    <label for="fname">First:</label>
-                    <input type="text" name="fname" id="fname">
-                </div>
-                <div class="ig">
-                    <label for="lname">Last:</label>
-                    <input type="text" name="lname" id="lname">
-                </div>
-                <div class="ig">
-                    <label for="email">Email:</label>
-                    <input type="text" name="email" id="email">
-                </div>
-                <div class="ig">
-                    <label for="phone">Phone:</label>
-                    <input type="text" name="phone" id="phone">
-                </div>
-                <div class="ig">
-                    <label for="pw">Password:</label>
-                    <input type="password" name="pw" id="pw">
-                </div>
-                <div class="ig">
-                    <label for="opt">Allow text reminders</label>
-                    <input type="checkbox" name="opt" id="opt">
-                </div>
-                <button id="create_account">Create Account</button>
-            </form>
-        </section>
-
+<section class="hero" id="login">
+  <div id="error"></div>
+  <form action="#">
+    <div class="ig">
+      <label for="fname">First:</label>
+      <input type="text" name="fname" id="fname" placeholder="First Name" />
+    </div>
+    <div class="ig">
+      <label for="lname">Last:</label>
+      <input type="text" name="lname" id="lname" placeholder="Last Name" />
+    </div>
+    <div class="ig">
+      <label for="email">Email:</label>
+      <input type="text" name="email" id="email" placeholder="Email Address" />
+    </div>
+    <div class="ig">
+      <label for="phone">Phone:</label>
+      <input type="text" name="phone" id="phone" placeholder="" />
+    </div>
+    <div class="ig">
+      <label for="pw">Password:</label>
+      <input
+        type="password"
+        name="pw"
+        id="pw"
+        placeholder="Must be between 8-20 characters"
+      />
+    </div>
+    <div class="ig">
+      <label for="opt">Allow text reminders</label>
+      <input type="checkbox" name="opt" id="opt" />
+    </div>
+    <button id="create_account">Create Account</button>
+  </form>
+</section>
 
 <script>
-        const registerFormHandler = async e => {
-        e.preventDefault()
-        first_name = document.getElementById('fname').value.trim()
-        last_name = document.getElementById('lname').value.trim()
-        email = document.getElementById('email').value.trim()
-        phone_number = document.getElementById('phone').value.trim()
-        password = document.getElementById('pw').value.trim()
-        allowText = document.getElementById('opt').value.trim()
-
-
-        if (email && password && fname && lname) {
-            response = await fetch('/api/users/', {
-                method: 'POST',
-                body: JSON.stringify({email, password, first_name, last_name, phone_number, allowText}),
-                headers: {'Content-Type': 'application/json'},
-            });
-
-
-
-            if (response.ok){
-     
-                const responseData = await response.json()
-                const user_id = responseData.user.id
-                document.location.replace(`/users/${user_id}`)
-            } else {
-                const errorSlot = document.getElementById('error')
-                errorSlot.textContent = 'Something went wrong :('
-            }
-        }
-
-    }
-
-    const create_account = document.getElementById('create_account')
-    .addEventListener('click', registerFormHandler)
-
-
+  const registerFormHandler = async e => { e.preventDefault() first_name =
+  document.getElementById('fname').value.trim() last_name =
+  document.getElementById('lname').value.trim() email =
+  document.getElementById('email').value.trim() phone_number =
+  document.getElementById('phone').value.trim() password =
+  document.getElementById('pw').value.trim() allowText =
+  document.getElementById('opt').value.trim() if (email && password && fname &&
+  lname) { response = await fetch('/api/users/', { method: 'POST', body:
+  JSON.stringify({email, password, first_name, last_name, phone_number,
+  allowText}), headers: {'Content-Type': 'application/json'}, }); if
+  (response.ok){ const responseData = await response.json() const user_id =
+  responseData.user.id document.location.replace(`/users/${user_id}`) } else {
+  const errorSlot = document.getElementById('error') errorSlot.textContent =
+  'Something went wrong :(' } } } const create_account =
+  document.getElementById('create_account') .addEventListener('click',
+  registerFormHandler)
 
 </script>
