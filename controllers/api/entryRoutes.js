@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     const entryData = await Entry.findAll(req.body);
     res.status(200).json(entryData);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({ message: `An ${error} has occured.` });
   }
 });
 
@@ -41,8 +41,8 @@ router.post("/", (req, res) => {
 //     });
 // });
 
-//  Update an entry
-router.put("/:id", async (req, res) => {
+//  Update an entry for a specific ID
+router.put("/:id", withAuth, async (req, res) => {
   try {
     const entryData = await Entry.update(req.body, {
       where: {
@@ -56,8 +56,8 @@ router.put("/:id", async (req, res) => {
       return;
     }
     res.status(200).json(entryData);
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json({ message: `An ${error} has occured` });
   }
 });
 
