@@ -1,17 +1,17 @@
 [
-  {
+  { "id": 1,
     "name": "Walk the Dog",
     "description": "I want to walk my dog for 15 minutes everyday in the evening.",
-    "user_id": "1"
+    "userId": "1"
   },
-  {
+  { "id": 2,
     "name": "Practice Piano",
     "description": "I want to practice the piano everyday for 10 minutes during my lunch break.",
-    "user_id": "1"
+    "userId": "1"
   },
-  {
+  { "id": 3,
     "name": "Read my Book",
     "description": "I want to read 3 pages of my book every night before I go to sleep.",
-    "user_id": "1"
+    "userId": "1"
   }
 ]
