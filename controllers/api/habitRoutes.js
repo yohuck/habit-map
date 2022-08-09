@@ -3,7 +3,7 @@ const { Habit, Entry } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //getting all habitData
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
   try {
     const habitData = await Habit.findAll({
       include: [{ model: Entry }],
