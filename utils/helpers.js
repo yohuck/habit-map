@@ -62,102 +62,123 @@ module.exports = {
       return weekArr
     
     },
-    dateRange: (entries) => {
-      const today = new Date;
-
-      // Temp seeds for testing
-      const early = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-5}`);
-      earlyi = new Date(early)
-    
-      const mid = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-3}`);
-      midi = new Date(mid)
-      const late = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-1}`);
-      latei = new Date(mid)
-
-      let tempSeed = [
-        {
-          id: 231,
-          date: earlyi,
-          completed: true,
-          habit_id: 4,
-        },
-        {
-          id: 236,
-          date: midi,
-          completed: true,
-          habit_id: 4,
-        },
-        {
-          id: 241,
-          date: latei,
-          completed: true,
-          habit_id: 4,
-        },
-      ];
-
-      const seeded = entries.concat(tempSeed) 
-
-    // Finds the high/low range
-      let lowest = today
-      let highest = today
-      seeded.forEach(obj => obj.date > highest ? highest = obj.date : '' )
-      seeded.forEach(obj => obj.date < lowest ? lowest = obj.date : '')
-      let range = [highest, lowest]
-
-      console.log(range)
-
-      let returner = []
-      
-      const first = new Date(lowest)
-      let next = new Date(lowest)
-      // next.setDate(first.getDay() + 1)
-      // console.log([first, next, highest])
+    // takes in entries and finds the first and last date, then creates an array of object representing every day in that range and marks whether or note an entry exists for each date in the range
+    dateRange: (input) => {
 
 
+      let processRange = (input) => {
 
-      let loop = new Date (first)
-      while (loop <= highest) {
-        let ayo = loop.toDateString()
-        // console.log(loop)
-        returner.push({
-          date: ayo,
-          hasEntry: false
-        })
-        let newDate = loop.setDate(loop.getDate() + 1)
-        loop = new Date(newDate)
-      }
-
-      console.log(returner)
-
-      seeded.map((element) => {
-        let isThis = element.date
-        let isThisTest = new Date (isThis)
-        let isThisTestToo = isThisTest.toDateString()
-
-        console.log(isThisTestToo)
-        element.date = isThisTestToo
-      })
-
-      console.log(seeded)
+        const hello = input;
   
 
-
-
-      for (let i = 0; i < returner.length; i++){
-        console.log(returner[i].date.toString())
-        let found = seeded.some(element => element.date.toString() == returner[i].date.toString())
-        console.log( found )
+        console.log(hello)
+        const entries = input.entries
+        // creates a new date time object
+        const today = new Date;
+  
+        // Temp seeds for testing
+        const early = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-5}`);
+        earlyi = new Date(early)
+        const mid = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-3}`);
+        midi = new Date(mid)
+        const late = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-1}`);
+        latei = new Date(late)
+        const future = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()+3}`)
+  
+        let tempSeed = [
+          {
+            id: 231,
+            date: earlyi,
+            completed: true,
+            habit_id: 4,
+          },
+          {
+            id: 236,
+            date: midi,
+            completed: true,
+            habit_id: 4,
+          },
+          {
+            id: 241,
+            date: latei,
+            completed: true,
+            habit_id: 4,
+          },
+        ];
+  
+        const seeded = entries.concat(tempSeed) 
+  
+      // Finds the high/low range. Adds 3 days to today to give some runway
+        let lowest = today
+        let highest = future
+        seeded.forEach(obj => obj.date > highest ? highest = obj.date : '' )
+        seeded.forEach(obj => obj.date < lowest ? lowest = obj.date : '')
+  
+        //creates return array
+        let returner = []
+        // formats lowest then loops through each day adding one day at a time with getDate().
+        const first = new Date(lowest)
+        let loop = new Date (first)
+        while (loop <= highest) {
+          let ayo = loop.toDateString()
+          // Sets hasEntry to false in object representing each day and pushes to return array.
+          returner.push({
+            date: ayo,
+            hasEntry: false
+          })
+          let newDate = loop.setDate(loop.getDate() + 1)
+          loop = new Date(newDate)
+        }
+  
+        // Formatts each date from the incoming entries
+        seeded.map((element) => {
+          //grabs the Date
+          let isThis = element.date
+          // Converts to JS date object for formatting
+          let isThisTest = new Date (isThis)
+          // Calls the formatting method
+          let isThisTestToo = isThisTest.toDateString()
+          // Sets the date
+          element.date = isThisTestToo
+        })
+        
+        const returnThis = []
+        // Loops through each day in the return object and marks the day and whether there's a match
+        for (let i = 0; i < returner.length; i++){
+          let day = returner[i].date.toString()
+          let found = seeded.some(element => element.date.toString() == returner[i].date.toString())
+          returnThis.push({day, found})
+        } 
+        input.hathReturned = returnThis
+        // console.log(hello)
+        return
       }
+
+
+
+
+
+
+      // console.log(input)
+      // console.log('why hello there')
+      // console.log(input.habits)
+
+      if (input.habits.length > 0 && input.habits[0].entries){
+        input.habits.forEach(habit => processRange(habit))
+        input.habits.forEach(habit => console.log(habit))
+        return input.habits
+   
+        
    
 
+      } else return 'hi'
 
-
-      // console.log(range)
+    
     }
   };
 
 
-// Generates the days of the week
+
 
 
 
