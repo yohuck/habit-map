@@ -6,18 +6,28 @@
                
             </article>
 
+            {{!-- {{#each fullHabits as |habit|}}
+                <div class="row">
+                    <h5>{{habit.name}}</h5>
+                {{#each hathReturned as |day |}}
+     
+                <div class='slot
+                {{#if day.isCompleted}}future{{/if}}'
+                {{#if !day.isCompleted}}id="today"{{/if}}
+     
+                >  
+                
+                </div>
+            {{/each}} --}}
 
 
-
-            {{#each habits as |habit|}}
+            {{#each fullHabits as |habit|}}
                 
             <div class="row">
                 <h5>{{habit.name}}</h5>
-                {{#each week as |day |}}
+                {{#each hathReturned as |day |}}
      
-                <div class='slot
-                {{#if day.isFuture}}future{{/if}}'
-                {{#if day.isToday}}id="today"{{/if}}
+                <div class='slot {{day.found}}'
      
                 >  
                 
