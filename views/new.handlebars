@@ -57,7 +57,7 @@
         if (name && description && userId) {
             response = await fetch('/api/habits/', {
                 method: 'POST',
-                body: JSON.stringify({userId, name, description, frequency }),
+                body: JSON.stringify({user_id: userId, name, description, frequency }),
                 headers: {'Content-Type': 'application/json'},
             });
             if (response.ok){

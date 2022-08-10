@@ -51,32 +51,21 @@
 
             const createEntryHandler = async id => {
                 const nowy = new Date()
-
-                const dateToPass = `${nowy.getFullYear()}-0${nowy.getMonth()}-0${nowy.getDate()}`
-                let passObj = {
-                    date: dateToPass,
-                    completed: true,
-                    habit_id: Number(id),
-                }
+                const dateToPass = `${nowy.getFullYear()}-${nowy.getMonth()}-${nowy.getDate()}`
+                const idToPass = Number(id)
                 
-                passObj = JSON.stringify(passObj)
-
-                console.log(passObj)
-
                 response = await fetch('/api/entries/', {
-                    method: 'POST',
-                    body: passObj,
-                    header: {'Content-Type' : 'application/json'}
-                });
-
+                method: 'POST',
+                body: JSON.stringify({date: dateToPass, completed: true, habit_id: idToPass }),
+                headers: {'Content-Type': 'application/json'},
+            });
                 if (response.ok){
-                    console.log('yayyy')
+                    console.log('Nice job! Now get out of my console')
                 } else {
-                    console.log('nooooo')
+                    console.log('Uh oh there was an error with the entry handler')
                 }
             }
 
-       
             for (let i = 0; i < yeah.length; i++){
                 yeah[i].addEventListener('click', (e) => {
                     let logid = e.target.parentElement.dataset.habitid

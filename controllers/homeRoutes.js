@@ -75,6 +75,8 @@ router.get("/users/:id", withAuth, async (req, res) => {
                 include: [{ model: Entry }] }]
           });
           const user = userData.get({plain: true})
+
+
         res.render('user', {
             user: user,
             habits: user.habits,
