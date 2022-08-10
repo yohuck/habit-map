@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { BOOLEAN, DataTypes } = require("sequelize");
-const { Entry } = require("../../models");
+const { Entry, Habit } = require("../../models");
 
 //  Get all entries
 router.get("/", async (req, res) => {
@@ -28,11 +28,17 @@ router.get("/:id", async (req, res) => {
 
 //  Add an entry
 router.post("/", async (req, res) => {
+
   try {
+
+    console.log('how about here?')
+
+    console.log(req.body)
+
     let test = {
       date: req.body.date,
       completed: req.body.completed,
-      habitId: req.body.habit_id
+      habit_id: req.body.habit_id
     }
     console.log('hellooooo')
     console.log(test)
