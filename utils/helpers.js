@@ -145,7 +145,7 @@ module.exports = {
 
       for (let i = 0; i < returner.length; i++){
         console.log(returner[i].date.toString())
-        let found = seeded.findIndex(element => element.date.toString() == returner[i].date.toString())
+        let found = seeded.some(element => element.date.toString() == returner[i].date.toString())
         console.log( found )
       }
    
