@@ -61,11 +61,69 @@ module.exports = {
     
       return weekArr
     
+    },
+    dateRange: (entries) => {
+      const today = new Date;
+      const early = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-5}`);
+      console.log(early)
+      const mid = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-3}`);
+      console.log(mid)
+      const late = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-1}`);
+      console.log(late)
+      let tempSeed = [
+        {
+          id: 231,
+          date: early,
+          completed: true,
+          habit_id: 4,
+        },
+        {
+          id: 236,
+          date: mid,
+          completed: true,
+          habit_id: 4,
+        },
+        {
+          id: 241,
+          date: late,
+          completed: true,
+          habit_id: 4,
+        },
+      ];
+      const seeded = entries.concat(tempSeed) 
+
+
+      let lowest = today
+      let highest = today
+      seeded.forEach(obj => obj.date > highest ? highest = obj.date : '' )
+      seeded.forEach(obj => obj.date < lowest ? lowest = obj.date : '')
+
+      let range = [highest, lowest]
+      let returner = []
+      
+      const first = new Date(lowest)
+      let next = new Date(lowest)
+      // next.setDate(first.getDay() + 1)
+      console.log([first, next, highest])
+
+      for (let i = 0; next < highest; i++){
+        next.setDate(first.getDate() + i)
+        console.log(next)
+        returner[next] = true
+      } console.log(returner)
+   
+
+
+
+      // console.log(range)
     }
   };
 
 
 // Generates the days of the week
+
+
+
 
 
 
