@@ -67,27 +67,29 @@ module.exports = {
 
       // Temp seeds for testing
       const early = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-5}`);
-      console.log(early)
+      earlyi = new Date(early)
+    
       const mid = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-3}`);
-      console.log(mid)
+      midi = new Date(mid)
       const late = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-1}`);
-      console.log(late)
+      latei = new Date(mid)
+
       let tempSeed = [
         {
           id: 231,
-          date: early,
+          date: earlyi,
           completed: true,
           habit_id: 4,
         },
         {
           id: 236,
-          date: mid,
+          date: midi,
           completed: true,
           habit_id: 4,
         },
         {
           id: 241,
-          date: late,
+          date: latei,
           completed: true,
           habit_id: 4,
         },
@@ -102,20 +104,23 @@ module.exports = {
       seeded.forEach(obj => obj.date < lowest ? lowest = obj.date : '')
       let range = [highest, lowest]
 
+      console.log(range)
+
       let returner = []
       
       const first = new Date(lowest)
       let next = new Date(lowest)
       // next.setDate(first.getDay() + 1)
-      console.log([first, next, highest])
+      // console.log([first, next, highest])
 
 
 
       let loop = new Date (first)
       while (loop <= highest) {
-        console.log(loop)
+        let ayo = loop.toDateString()
+        // console.log(loop)
         returner.push({
-          date: loop,
+          date: ayo,
           hasEntry: false
         })
         let newDate = loop.setDate(loop.getDate() + 1)
@@ -123,7 +128,20 @@ module.exports = {
       }
 
       console.log(returner)
+
+      seeded.map((element) => {
+        let isThis = element.date
+        let isThisTest = new Date (isThis)
+        let isThisTestToo = isThisTest.toDateString()
+
+        console.log(isThisTestToo)
+        element.date = isThisTestToo
+      })
+
       console.log(seeded)
+  
+
+
 
       for (let i = 0; i < returner.length; i++){
         console.log(returner[i].date.toString())
