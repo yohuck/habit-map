@@ -6,17 +6,17 @@
   },
   {
     "date": "2022-08-01",
-    "completed": false,
+    "completed": true,
     "habit_id": 2
   },
   {
     "date": "2022-08-01",
-    "completed": false,
+    "completed": true,
     "habit_id": 3
   },
   {
     "date": "2022-08-02",
-    "completed": false,
+    "completed": true,
     "habit_id": 1
   },
   {
@@ -31,7 +31,7 @@
   },
   {
     "date": "2022-08-03",
-    "completed": false,
+    "completed": true,
     "habit_id": 1
   },
   {
@@ -46,7 +46,7 @@
   },
   {
     "date": "2022-08-04",
-    "completed": false,
+    "completed": true,
     "habit_id": 1
   },
   {

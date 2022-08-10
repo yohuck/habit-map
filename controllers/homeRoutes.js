@@ -75,12 +75,28 @@ router.get("/users/:id", withAuth, async (req, res) => {
                 include: [{ model: Entry }] }]
           });
           const user = userData.get({plain: true})
+          const week = helpers.buildWeek()
+          const habits = user.habits
+
+          const test = helpers.dateRange(user.habits[0].entries)
+
+          habits.forEach(habit => {
+            habit.week = week
+          })
+
+        //   user.forEach(habit => {
+        //     habit.week = week
+            
+        //   });
+
+        //   console.log(user)
 
 
         res.render('user', {
             user: user,
             habits: user.habits,
-            entries: user.habits.entries
+            // entries: user.habits.entries,
+            days: week
             // ...habity
         })
     
