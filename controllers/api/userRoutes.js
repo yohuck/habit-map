@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-//getting userData by id
+//getting userData id
 router.get("/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
@@ -25,13 +25,30 @@ router.get("/:id", withAuth, async (req, res) => {
       return;
     }
     res.status(200).json(userData);
+  } catch (error) {
+    res.status(500).json({ message: `An ${error} has occured.` });
+  }
+});
+
+//getting all User Habits
+router.get("/habits/:id", async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id, {
+      include: [{ model: Habit }],
+    });
+    if (!userData) {
+      res.status(404).json({ message: "No user with this id!" });
+      return;
+    }
+    res.status(200).json(userData);
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });
 
-//creating a new user
-router.post("/", async (req, res) => {
+//new user registering for an account
+router.post("/register", async (req, res) => {
   try {
     const userData = await User.create({
       first_name: req.body.first_name,
@@ -44,10 +61,11 @@ router.post("/", async (req, res) => {
     // Set up sessions with a 'loggedIn' variable set to `true`
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.email = userData.email;
       req.session.first_name = userData.first_name;
       req.session.last_name = userData.last_name;
+      req.session.email = userData.email;
       req.session.password = userData.password;
+      req.session.phone_number = userData.phone_number;
       req.session.loggedIn = true;
 
       res.status(200).json({
@@ -111,11 +129,7 @@ router.put("/:id", async (req, res) => {
   try {
     const userData = await User.update(
       {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        email: req.body.email,
         password: req.body.password,
-        phone_number: req.body.phone_number,
       },
       {
         where: {
@@ -127,7 +141,7 @@ router.put("/:id", async (req, res) => {
       res.status(404).json({ message: "No user was found with this id." });
       return;
     }
-    res.status(200).json({ message: `User was successfully updated.` });
+    res.status(200).json({ message: `User's password was successfully updated.` });
   } catch (error) {
     res.status(500).json({ message: `An ${error} has occured.` });
   }
