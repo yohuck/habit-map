@@ -48,7 +48,7 @@ router.get("/habits/:id", async (req, res) => {
 });
 
 //new user registering for an account
-router.post("/register", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const userData = await User.create({
       first_name: req.body.first_name,
