@@ -13,26 +13,32 @@
                 
             <div class="row">
                 <h5>{{habit.name}}</h5>
-                {{#each entries as |entry| }}
+                {{#each week as |day |}}
+     
+                <div class='slot
+                {{#if day.isFuture}}future{{/if}}'
+                {{#if day.isToday}}id="today"{{/if}}
+     
+                >  
+                
+                </div>
+
+
+
+                {{/each}}
+                {{!-- {{#each entries as |entry| }}
                 
                     <div class="slot"></div>
                 {{/each}}
-                {{!-- {{#each entry}}
-                <div class="slot">{{../user}}{{completed}}</div>
-                {{/entry}} --}}
-{{!-- 
-            {{#each entry}}
- 
-            <p>Hello</p>
-            {{/each}} --}}
-       
+        --}}
             </div>
 
             <p class="habit_descrip">{{habit.description}}</p>
             <br>
 
+
             {{/each}}
-            
+
 
             {{!-- {{#each habits}}
             {{/each}} --}}

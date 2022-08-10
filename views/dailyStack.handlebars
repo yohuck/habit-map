@@ -51,7 +51,9 @@
 
             const createEntryHandler = async id => {
                 const nowy = new Date()
-                const dateToPass = `${nowy.getFullYear()}-${nowy.getMonth()}-${nowy.getDate()}`
+                console.log(new Date(nowy))
+                const dateToPass = `${nowy.getFullYear()}-${nowy.getMonth() +1}-${nowy.getDate()}`
+                console.log(dateToPass)
                 const idToPass = Number(id)
                 
                 response = await fetch('/api/entries/', {
