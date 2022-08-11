@@ -22,15 +22,18 @@
 
 
             {{#each fullHabits as |habit|}}
-                
+            
+                 
             <div class="row">
-                <h5>{{habit.name}}</h5>
+                       <h5 class="habit_title">{{habit.name}}</h5>
+                       <h5 class="habit_title">{{habit.topStreak}}</h5>
                 {{#each hathReturned as |day |}}
+
      
-                <div class='slot {{day.found}}'
+                <div class='slot {{day.found}} {{day.message}}'
      
                 >  
-                
+                {{#if day.found}} <p>🔥</p>{{/if}}
                 </div>
 
 
