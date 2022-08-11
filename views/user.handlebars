@@ -1,42 +1,30 @@
        <section class="hero-2" id="stacks">
             <div class="bg"></div>
             <article class="hero-text">
-               <h2>{{user.first_name}}'s Stack</h2>
-            
-               
+               <h2 class="user_text">{{user.first_name}}'s Stack</h2>
             </article>
+            <hr>
 
-            {{!-- {{#each fullHabits as |habit|}}
-                <div class="row">
-                    <h5>{{habit.name}}</h5>
-                {{#each hathReturned as |day |}}
-     
-                <div class='slot
-                {{#if day.isCompleted}}future{{/if}}'
-                {{#if !day.isCompleted}}id="today"{{/if}}
-     
-                >  
-                
-                </div>
-            {{/each}} --}}
 
 
             {{#each fullHabits as |habit|}}
             
-                 
+            <div class="habit_title_text">
+                <h3 class="habit_title">{{habit.name}}</h3>
+                <h5 class="habit_title">Max-Streak: {{habit.topStreak}}</h5>
+            </div>
             <div class="row">
-                       <h5 class="habit_title">{{habit.name}}</h5>
-                       <h5 class="habit_title">{{habit.topStreak}}</h5>
+
                 {{#each hathReturned as |day |}}
 
      
                 <div class='slot {{day.found}} {{day.message}}'
      
                 >  
-                {{#if day.found}} <p>🔥</p>{{/if}}
+                {{!-- {{#if day.found}} <p>🔥</p>{{/if}} --}}
                 </div>
 
-
+        
 
                 {{/each}}
                 {{!-- {{#each entries as |entry| }}
@@ -48,7 +36,7 @@
 
             <p class="habit_descrip">{{habit.description}}</p>
             <br>
-
+    <hr>
 
             {{/each}}
 
