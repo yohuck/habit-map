@@ -126,8 +126,8 @@ button{
 }
 
 .row{
-    /* width: 90vw; */
-    /* max-width: 800px; */
+    width: 90vw;
+    max-width: 600px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -138,8 +138,11 @@ button{
     background-color: var(--bg-color);
 }
 
+
+
 .slot{
-    width: 4vw;
+    width: 12vw;
+    max-width: 12%;
     aspect-ratio: 1;
     /* width: clamp(5px, calc(5px + 2vw), 35px); */
     background-color: var(--accent);
@@ -149,6 +152,10 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.smaller{
+    max-width: 30px;
 }
 
 #today::before{
@@ -581,6 +588,11 @@ hr{
 }
 
 .streakEmoji{
-    font-size: 0.6rem;
+    font-size: clamp(1rem, 3vw, 3rem);
     text-align: center;
+}
+
+.sml-row{
+    width: 90%;
+
 }

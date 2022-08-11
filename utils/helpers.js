@@ -112,17 +112,24 @@ module.exports = {
         let lowest = today
         let highest = future
         // Adds padding to the front if not started on a Monday
-        const lowestTest = lowest.getDay()
-        if (lowestTest > 1 ){
-          let fuller = lowestTest- 1
-          lowest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()- fuller}`)
-        }
-        if (lowestTest == 0 ){
-          lowest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate() - 6}`)
-        }
+
 
         entries.forEach(obj => obj.date > highest ? highest = obj.date : '' )
         entries.forEach(obj => obj.date < lowest ? lowest = obj.date : '')
+
+
+        const lowestTest = lowest.getDay()
+        console.log(lowestTest)
+        console.log('lowest test here' + lowestTest)
+        if (lowestTest > 1 ){
+          let fuller = lowestTest- 1
+          console.log(fuller)
+          lowest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()- fuller}`)
+        }
+        if (lowestTest == 0 ){
+          console.log('hello')
+          lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
+        }
   
         //creates return array
         let returner = []
