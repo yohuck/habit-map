@@ -10,8 +10,10 @@ Habit.belongsTo(User);
 
 Habit.hasMany(Entry);
 
+
 Entry.belongsTo(Habit, {
   onDelete: "CASCADE",
 });
+
 
 module.exports = { User, Habit, Entry };

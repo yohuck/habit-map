@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 //getting userData id
-router.get("/:id", withAuth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
       include: [{ model: Habit, include: [{ model: Entry }] }],
@@ -37,15 +37,34 @@ router.get("/habits/:id", async (req, res) => {
       include: [{ model: Habit }],
     });
     if (!userData) {
-      res.status(404).json({ message: "No user with this id!" });
+      res.status(404).json({ message: "No habits found with this user id!" });
       return;
     }
     res.status(200).json(userData);
-  } catch (err) {
-    console.log(err)
-    res.status(500).json(err);
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: `An ${error} has occured.` });
   }
 });
+
+//getting all User Entries
+router.get("/entries/:id", async (req, res) => {
+  try {
+    const response = await User.findByPk(req.params.id, {
+      include: [{ model: Habit, include: [{ model: Entry }] }],
+    });
+    if (!response) {
+      res.status(404).json({ message: "No user with this id!" });
+      return;
+    }
+    let resp = response.habits
+    console.log(resp)
+    res.status(200).json(resp);
+  } catch (error) {
+    res.status(500).json({ message: `An ${error} has occured.` });
+  }
+});
+
 
 //new user registering for an account
 router.post("/", async (req, res) => {
