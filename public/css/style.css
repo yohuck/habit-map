@@ -514,7 +514,9 @@ label{
 
 
 .habit_descrip{
-    max-width: 400px;
+    text-align: center;
+    width: 65%;
+    max-width: 800px;
     margin: 0rem auto;
 }
 
@@ -529,7 +531,7 @@ label{
 }
 
 .false {
-    background-color:#ebb84b;
+    background-color:#7b4beb63;
 }
 
 .future{
@@ -544,3 +546,29 @@ label{
     text-align: center;
 }
 
+.habit_title_text{
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    line-height: 0.6rem;
+    text-align: center;
+}
+
+.user_text{
+    font-size:3rem;
+    text-align: center;
+    line-height: 2.5rem;
+    color: #011307;
+    padding: 1rem;
+}
+
+
+hr{
+    margin: 0 auto;
+    height: 2px;
+    margin-bottom: 1.5rem;
+    width: 33%;
+    background-color: var(--accent);
+    border: 1px solid var(--accent);
+
+}
