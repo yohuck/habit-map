@@ -68,7 +68,7 @@ module.exports = {
 
       let processRange = (input) => {
 
-        const hello = input;
+        // const hello = input;
   
 
         // console.log(hello)
@@ -85,34 +85,51 @@ module.exports = {
         latei = new Date(late)
         const future = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()+3}`)
   
-        let tempSeed = [
-          {
-            id: 231,
-            date: earlyi,
-            completed: true,
-            habit_id: 4,
-          },
-          {
-            id: 236,
-            date: midi,
-            completed: true,
-            habit_id: 4,
-          },
-          {
-            id: 241,
-            date: latei,
-            completed: true,
-            habit_id: 4,
-          },
-        ];
+        // let tempSeed = [
+        //   {
+        //     id: 231,
+        //     date: earlyi,
+        //     completed: true,
+        //     habit_id: 4,
+        //   },
+        //   {
+        //     id: 236,
+        //     date: midi,
+        //     completed: true,
+        //     habit_id: 4,
+        //   },
+        //   {
+        //     id: 241,
+        //     date: latei,
+        //     completed: true,
+        //     habit_id: 4,
+        //   },
+        // ];
   
-        const seeded = entries.concat(tempSeed) 
+        const seeded = entries
   
       // Finds the high/low range. Adds 3 days to today to give some runway
         let lowest = today
         let highest = future
+        // Adds padding to the front if not started on a Monday
+
+
         entries.forEach(obj => obj.date > highest ? highest = obj.date : '' )
         entries.forEach(obj => obj.date < lowest ? lowest = obj.date : '')
+
+
+        const lowestTest = lowest.getDay()
+        // console.log(lowestTest)
+        // console.log('lowest test here' + lowestTest)
+        if (lowestTest > 1 ){
+          let fuller = lowestTest- 1
+          // console.log(fuller)
+          lowest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()- fuller}`)
+        }
+        if (lowestTest == 0 ){
+          // console.log('hello')
+          lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
+        }
   
         //creates return array
         let returner = []
@@ -162,60 +179,73 @@ module.exports = {
           returnThis.push({day, found, message})
         } 
         input.hathReturned = returnThis
-        // console.log(hello)
         return
       }
 
-      const streaktest = habit => {
-        console.log(habit.hathReturned)
-        let streakObj = {}
+      const streakTest = habit => {
+        // console.log(habit)
+        let topStreakDate = []
         let topStreak = 0
         let streak = 0
-        let last = true
+        let last = false
         for (let i = 0; i < habit.hathReturned.length; i++){
-          let a = habit.hathReturned[i].found;
-          let b = last
-          console.log({a,b})
           if ( habit.hathReturned[i].found == true && last == true){
-            console.log('break')
-            console.log(habit.hathReturned[i].found)
-            console.log('break')
-            console.log(last)
-            console.log('break')
             streak++
-            console.log(streak)
             if (streak > topStreak){
               topStreak = streak
-              console.log(`topStreak = ${topStreak}`)
+              topStreakDate = habit.hathReturned[i].day
             }
           } else streak = 0
           last =  last = habit.hathReturned[i].found
         } habit.topStreak = topStreak
-        console.log(topStreak)
+          habit.topStreakDate = topStreakDate
+          habit.streakEmoji = ''
 
+          if (habit.topStreak >= 4){
+            habit.streakEmoji = '🔥'
+            const start = habit.hathReturned.findIndex(element => element.day == habit.topStreakDate)
+            // console.log('hello this is me ' + start)
+            for (let i = 0; i <= habit.topStreak; i++ ){
+              // console.log(habit.hathReturned[start - i])
+              let minus = i
+              habit.hathReturned[start - minus].isTopStreak = true
+            }
+          }
       }
-      
+
+      const currentStreak = habit => {
+        // console.log(habit.hathReturned)
+        const pres = habit.hathReturned.findIndex(element => element.message === 'present')
+        // habit.hathReturned[pres - 1].found = true
+        // habit.hathReturned[pres - 2].found = true
+        // console.log(pres)
+        if(habit.hathReturned[pres].found === true){
+          let count = 0
+          let x = pres
+          // console.log(x)
+          // console.log(habit.hathReturned[x])
+          for (let i = 1; habit.hathReturned[x].found === true; i--){
+            count++;
+            x -= 1
+            console.log(`the count is`)
+          } habit.currentStreak = count
+        }
+
+        console.log(habit)
+      }
 
 
 
 
 
 
-      // console.log(input)
-      // console.log('why hello there')
-      // console.log(input.habits)
-
+      // Calls the procresRange & streakTest functions on each habit if there is at least one habit and that habit has at least one entry.
       if (input.habits.length > 0 && input.habits[0].entries){
         input.habits.forEach(habit => processRange(habit))
-        input.habits.forEach(habit => streaktest(habit))
+        input.habits.forEach(habit => streakTest(habit))
+        input.habits.forEach(habit => currentStreak(habit) )
         return input.habits
-   
-        
-   
-
       } else return 'hi'
-
-    
     }
   };
 

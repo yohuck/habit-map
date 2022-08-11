@@ -126,8 +126,11 @@ button{
 }
 
 .row{
+    width: 90vw;
+    max-width: 600px;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     align-items: center;
     border: 1px solid black;
     margin: 0.5rem auto;
@@ -135,13 +138,29 @@ button{
     background-color: var(--bg-color);
 }
 
+
+
 .slot{
-    width: clamp(5px, calc(5px + 2vw), 35px);
+    width: 12vw;
+    max-width: 12%;
+    aspect-ratio: 1;
+    /* width: clamp(5px, calc(5px + 2vw), 35px); */
     background-color: var(--accent);
-    height: clamp(5px, calc(5px + 2vw), 35px);
+    /* height: clamp(5px, calc(5px + 2vw), 35px); */
     margin: 0.2rem 0.2rem;
     box-shadow: 3px 3px rgb(40, 48, 49);
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper{
+    display: flex;
+
+}
+
+.smaller{
+    max-width: 30px;
 }
 
 #today::before{
@@ -539,7 +558,7 @@ label{
 }
 
 .present{
-    border: 4px solid #111d24;
+    border: 4px dashed #7b4beb63;
 }
 
 .slot p {
@@ -570,5 +589,15 @@ hr{
     width: 33%;
     background-color: var(--accent);
     border: 1px solid var(--accent);
+
+}
+
+.streakEmoji{
+    font-size: clamp(1.3rem, 5vw, 2.5rem);
+    text-align: center;
+}
+
+.sml-row{
+    width: 90%;
 
 }
