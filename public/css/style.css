@@ -130,7 +130,7 @@ button{
     max-width: 600px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     border: 1px solid black;
     margin: 0.5rem auto;
@@ -152,6 +152,11 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.wrapper{
+    display: flex;
+
 }
 
 .smaller{

@@ -13,25 +13,20 @@
                 <h3 class="habit_title">{{habit.name}}</h3>
                 <h5 class="habit_title">Max-Streak: {{habit.topStreak}}</h5>
             </div>
-            <div class="row">
-
-                {{#each hathReturned as |day |}}
-
-     
-                <div class='slot {{day.found}} {{day.message}}'
-     
-                >  
-                {{#if day.isTopStreak}} <p class="streakEmoji">🔥</p>{{/if}}
-                </div>
-
-        
-
-                {{/each}}
-                {{!-- {{#each entries as |entry| }}
+            <div class="wrapper">
+                <div class="row">
+                    {{#each hathReturned as |day |}}
+                    <div class='slot {{day.found}} {{day.message}}'
+                    >
+                    {{#if day.isTopStreak}} <p class="streakEmoji">🔥</p>{{/if}}
+                    </div>
+                    {{/each}}
+                    {{!-- {{#each entries as |entry| }}
                 
-                    <div class="slot"></div>
-                {{/each}}
-        --}}
+                        <div class="slot"></div>
+                    {{/each}}
+                        --}}
+                </div>
             </div>
 
             <p class="habit_descrip">{{habit.description}}</p>
