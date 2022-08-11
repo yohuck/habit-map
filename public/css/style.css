@@ -141,6 +141,7 @@ button{
     height: clamp(5px, calc(5px + 2vw), 35px);
     margin: 0.2rem 0.2rem;
     box-shadow: 3px 3px rgb(40, 48, 49);
+    position: relative;
 }
 
 #today::before{
@@ -528,5 +529,18 @@ label{
 }
 
 .false {
-    background-color:#ca0c5b;
+    background-color:#ebb84b;
 }
+
+.future{
+    background-color: #A4B8C4;
+}
+
+.present{
+    border: 4px solid #111d24;
+}
+
+.slot p {
+    text-align: center;
+}
+
