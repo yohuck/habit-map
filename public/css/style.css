@@ -141,7 +141,9 @@ button{
     height: clamp(5px, calc(5px + 2vw), 35px);
     margin: 0.2rem 0.2rem;
     box-shadow: 3px 3px rgb(40, 48, 49);
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #today::before{
@@ -571,4 +573,9 @@ hr{
     background-color: var(--accent);
     border: 1px solid var(--accent);
 
+}
+
+.streakEmoji{
+    font-size: 0.6rem;
+    text-align: center;
 }

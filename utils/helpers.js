@@ -162,60 +162,44 @@ module.exports = {
           returnThis.push({day, found, message})
         } 
         input.hathReturned = returnThis
-        // console.log(hello)
         return
       }
 
-      const streaktest = habit => {
-        console.log(habit.hathReturned)
-        let streakObj = {}
+      const streakTest = habit => {
+        let topStreakDate = []
         let topStreak = 0
         let streak = 0
         let last = true
         for (let i = 0; i < habit.hathReturned.length; i++){
-          let a = habit.hathReturned[i].found;
-          let b = last
-          console.log({a,b})
           if ( habit.hathReturned[i].found == true && last == true){
-            console.log('break')
-            console.log(habit.hathReturned[i].found)
-            console.log('break')
-            console.log(last)
-            console.log('break')
             streak++
-            console.log(streak)
             if (streak > topStreak){
               topStreak = streak
-              console.log(`topStreak = ${topStreak}`)
+              topStreakDate = habit.hathReturned[i].day
             }
           } else streak = 0
           last =  last = habit.hathReturned[i].found
         } habit.topStreak = topStreak
-        console.log(topStreak)
+          habit.topStreakDate = topStreakDate
+          habit.streakEmoji = ''
 
+          if (habit.topStreak >= 5){
+            habit.streakEmoji = '🔥'
+            const start = habit.hathReturned.findIndex(element => element.day == habit.topStreakDate)
+            console.log('hello this is me ' + start)
+            for (let i = 0; i < habit.topStreak; i++ ){
+              console.log(habit.hathReturned[start - i])
+              let minus = start - i
+              habit.hathReturned[start - minus].isTopStreak = true
+            }
+          }
       }
-      
-
-
-
-
-
-
-      // console.log(input)
-      // console.log('why hello there')
-      // console.log(input.habits)
-
+      // Calls the procresRange & streakTest functions on each habit if there is at least one habit and that habit has at least one entry.
       if (input.habits.length > 0 && input.habits[0].entries){
         input.habits.forEach(habit => processRange(habit))
-        input.habits.forEach(habit => streaktest(habit))
+        input.habits.forEach(habit => streakTest(habit))
         return input.habits
-   
-        
-   
-
       } else return 'hi'
-
-    
     }
   };
 
