@@ -119,17 +119,30 @@ module.exports = {
 
 
         const lowestTest = lowest.getDay()
-        // console.log(lowestTest)
+        console.log(lowestTest)
         // console.log('lowest test here' + lowestTest)
         if (lowestTest > 1 ){
           let fuller = lowestTest- 1
           // console.log(fuller)
-          lowest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()- fuller}`)
+          lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - fuller}`)
+          console.log(new Date(lowest).getDay())
         }
         if (lowestTest == 0 ){
           // console.log('hello')
           lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
         }
+        console.log(highest)
+
+        const highestTest = new Date(highest).getDay()
+
+        console.log(highestTest)
+
+        if (highestTest != 0){
+          let fullerHigh = 7 - highestTest
+          highest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate() +  fullerHigh}`)
+        }
+
+
   
         //creates return array
         let returner = []
@@ -187,25 +200,29 @@ module.exports = {
         let topStreakDate = []
         let topStreak = 0
         let streak = 0
-        let last = false
+        let last = true
         for (let i = 0; i < habit.hathReturned.length; i++){
           if ( habit.hathReturned[i].found == true && last == true){
             streak++
             if (streak > topStreak){
+            
               topStreak = streak
               topStreakDate = habit.hathReturned[i].day
             }
-          } else streak = 0
-          last =  last = habit.hathReturned[i].found
+          } else {
+            streak = 0
+  
+          }
+ 
         } habit.topStreak = topStreak
           habit.topStreakDate = topStreakDate
           habit.streakEmoji = ''
 
-          if (habit.topStreak >= 4){
+          if (habit.topStreak >= 5){
             habit.streakEmoji = '🔥'
             const start = habit.hathReturned.findIndex(element => element.day == habit.topStreakDate)
             // console.log('hello this is me ' + start)
-            for (let i = 0; i <= habit.topStreak; i++ ){
+            for (let i = 0; i < habit.topStreak; i++ ){
               // console.log(habit.hathReturned[start - i])
               let minus = i
               habit.hathReturned[start - minus].isTopStreak = true
@@ -227,11 +244,14 @@ module.exports = {
           for (let i = 1; habit.hathReturned[x].found === true; i--){
             count++;
             x -= 1
-            console.log(`the count is`)
+            // console.log(`the count is`)
           } habit.currentStreak = count
+          if (habit.currentStreak > habit.topStreak){
+            habit.topStreak = habit.currentStreak
+          }
         }
 
-        console.log(habit)
+        // console.log(habit)
       }
 
 

@@ -130,7 +130,7 @@ button{
     max-width: 600px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     border: 1px solid black;
     margin: 0.5rem auto;
