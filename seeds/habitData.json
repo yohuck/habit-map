@@ -3,18 +3,60 @@
     "id": 1,
     "name": "Walk the Dog",
     "description": "I want to walk my dog for 15 minutes everyday in the evening.",
-    "user_id": "4"
+    "user_id": 4
   },
   {
     "id": 2,
     "name": "Practice Piano",
     "description": "I want to practice the piano everyday for 10 minutes during my lunch break.",
-    "user_id": "4"
+    "user_id": 4
   },
   {
     "id": 3,
     "name": "Read my Book",
     "description": "I want to read 3 pages of my book every night before I go to sleep.",
-    "user_id": "4"
+    "user_id": 4
+  },
+  {
+    "id": 4,
+    "name": "Practice Yoga",
+    "description": "I want to practice yoga 3x a week.",
+    "user_id": 14
+  },
+  {
+    "id": 5,
+    "name": "Cook Dinner",
+    "description": "I want to cook dinner 4x a week.",
+    "user_id": 14
+  },
+  {
+    "id": 6,
+    "name": "Run 2 Miles a Week",
+    "description": "I want to run 2 miles a week this month.",
+    "user_id": 14
+  },
+  {
+    "id": 7,
+    "name": "Walk the Cat",
+    "description": "I want to walk my cat for 17 minutes everyday morning.",
+    "user_id": 24
+  },
+  {
+    "id": 8,
+    "name": "Practice the Harp",
+    "description": "I want to practice the harp everyday for 32 minutes.",
+    "user_id": 24
+  },
+  {
+    "id": 9,
+    "name": "Make Cupcakes",
+    "description": "I want to MAKE CUPCAKESSSS.",
+    "user_id": 24
+  },
+  {
+    "id": 10,
+    "name": "Blah Blah Blah",
+    "description": "I want to blaaaaaaaaaaah.",
+    "user_id": 24
   }
 ]
