@@ -106,11 +106,21 @@ module.exports = {
           },
         ];
   
-        const seeded = entries.concat(tempSeed) 
+        const seeded = entries
   
       // Finds the high/low range. Adds 3 days to today to give some runway
         let lowest = today
         let highest = future
+        // Adds padding to the front if not started on a Monday
+        const lowestTest = lowest.getDay()
+        if (lowestTest > 1 ){
+          let fuller = lowestTest- 1
+          lowest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()- fuller}`)
+        }
+        if (lowestTest == 0 ){
+          lowest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate() - 6}`)
+        }
+
         entries.forEach(obj => obj.date > highest ? highest = obj.date : '' )
         entries.forEach(obj => obj.date < lowest ? lowest = obj.date : '')
   
