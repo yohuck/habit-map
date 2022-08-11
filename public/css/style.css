@@ -126,7 +126,10 @@ button{
 }
 
 .row{
+    /* width: 90vw; */
+    /* max-width: 800px; */
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     border: 1px solid black;
@@ -136,9 +139,11 @@ button{
 }
 
 .slot{
-    width: clamp(5px, calc(5px + 2vw), 35px);
+    width: 4vw;
+    aspect-ratio: 1;
+    /* width: clamp(5px, calc(5px + 2vw), 35px); */
     background-color: var(--accent);
-    height: clamp(5px, calc(5px + 2vw), 35px);
+    /* height: clamp(5px, calc(5px + 2vw), 35px); */
     margin: 0.2rem 0.2rem;
     box-shadow: 3px 3px rgb(40, 48, 49);
     display: flex;
