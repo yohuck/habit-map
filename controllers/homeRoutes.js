@@ -5,7 +5,9 @@ const { Habit, User, Entry } = require("../models");
 const helpers = require("../utils/helpers")
 
 router.get('/', async(req, res) => {
+    console.log(req.session.loggedIn)
     res.render('homepage', {
+        loggedIn: req.session.loggedIn
 
     })
 })
@@ -21,6 +23,7 @@ router.get('/logout', async (req, res) => {
     }
 
     res.render('homepage', {
+
 
     })
 })
@@ -54,6 +57,7 @@ router.get('/new', async (req, res) => {
 
 
     res.render('new', {
+        loggedIn: req.session.loggedIn,
 
     })
 })
@@ -106,7 +110,8 @@ router.get("/users/:id", withAuth, async (req, res) => {
             fullHabits: test,
             user: user,
             habits: user.habits,
-            days: week
+            days: week,
+            loggedIn: req.session.loggedIn
         })
     
     } catch(err) {

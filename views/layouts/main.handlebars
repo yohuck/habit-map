@@ -11,20 +11,57 @@
 <body>
     <header>
         <nav>
+            {{#if loggedIn}}
+            <div class="title"><a href="/users/{{user.id}}">Habit Stack</a></div>
+            {{else}}
             <div class="title"><a href="/">Habit Stack</a></div>
+            {{/if}}
+
+
 
             <ul>
+                {{#if loggedIn}}
                 <li>
-                    <a href="#">About</a>
+                   <a class="settings_widget"><i class="fa-solid fa-gear" alt="settings"></i></a>
                 </li>
+                {{else}}
                 <li>
-                    <a href="/login">Login</a>
+                   <a href="/login">Login</a>
                 </li>
-                <li>
-                    <a href="/logout">Logout</a>
-                </li>
+                {{/if}}
             </ul>
+          
         </nav>
+          <div class="settings">
+                <form action="#" id="settings">
+                    <h4>Update User</h4>
+                <div id="error"></div>
+                <div class="ig">
+                    <label for="email_s">Email:</label>
+                    <input type="text" name="email_s" id="email_s">
+                </div>
+
+                <div class="ig">
+                    <label for="pw">Current Password:</label>
+                    <input type="password" name="pwc" id="pwc">
+                </div>
+                <div class="ig">
+                    <label for="pw_new">New Password:</label>
+                    <input type="password" name="pw_new" id="pw_new">
+                </div>
+                <div class="ig">
+                    <div class="horiz">
+                        <label for="delete_user" id="delabel">Delete Account</label>
+                        <input type="checkbox" name="delete_user" id="delete_user">
+                    </div>
+                </div>
+                <div class="buttons-row">
+                    <button class="savePassword">Update</button>
+                    <button class="cancelUpdate">Cancel</button>
+                    <a href="/logout"><button class="loggy">Logout</button></a>
+                </div>
+            </form>
+            </div>
     </header>
     <main>
 
@@ -47,6 +84,35 @@
 </html>
 
 <script>
+    let settings = document.getElementsByClassName('settings_widget');
+    let settingsDrawer = document.getElementsByClassName('settings');
+    let cancelUpdate = document.getElementsByClassName('cancelUpdate');
+    let loggy = document.getElementsByClassName('loggy');
+
+    let toggle = false;
+
+    if (settings[0]){
+            settings[0].addEventListener('click', (e) => {
+        e.preventDefault()
+        toggle ? settingsDrawer[0].setAttribute('style', 'transform: translateY(0)') : settingsDrawer[0].setAttribute('style', 'transform: translateY(100vh)')
+        toggle = !toggle
+
+    })
+    }
+
+
+    cancelUpdate[0].addEventListener('click', (e) => {
+        e.preventDefault()
+
+        settingsDrawer[0].setAttribute('style', 'transform: translateY(0vh)')
+    })
+
+    loggy[0].addEventListener('click', (e) => {
+        e.preventDefault()
+         document.location.replace(`/logout`)
+    })
+
+
 
 
 </script>
