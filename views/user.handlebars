@@ -5,13 +5,14 @@
             </article>
             <hr>
 
-
+  
 
             {{#each fullHabits as |habit|}}
             
             <div class="habit_title_text">
                 <h3 class="habit_title">{{habit.name}}</h3>
                 <h5 class="habit_title">Max-Streak: {{habit.topStreak}} | Current Streak: {{habit.currentStreak}}</h5>
+                
 
             </div>
             <div class="wrapper">
@@ -22,34 +23,19 @@
                     {{#if day.isTopStreak}} <p class="streakEmoji">🔥</p>{{/if}}
                     </div>
                     {{/each}}
-                    {{!-- {{#each entries as |entry| }}
-                
-                        <div class="slot"></div>
-                    {{/each}}
-                        --}}
                 </div>
             </div>
 
             <p class="habit_descrip">{{habit.description}}</p>
+            <button class="delete_habit" data-delid="{{habit.id}}">delete</button>
+        
+
             <br>
     <hr>
 
             {{/each}}
 
 
-            {{!-- {{#each habits}}
-            {{/each}} --}}
-
-{{!-- <div class="row">
-    <h5>Dynamically created!</h5>
-{{#each days as |day |}}
-   <div class='slot
-   {{#if day.isFuture}}future{{/if}}'
-   {{#if day.isToday}}id="today"{{/if}}
-   ></div>
-{{/each}}
-</div> --}}
-   
             <button id="new_habit">Add new habit</button>
             <button id="stacker">Stack em!</button>
             <article class="hero-text">
@@ -76,5 +62,32 @@ const stacker = document.getElementById('stacker')
 stacker.addEventListener('click', () => {
     location.assign(`/users/${userNum}/stack`)
 })
+
+const deletes = document.getElementsByClassName('delete_habit')
+
+console.log(deletes)
+
+for (let i = 0; i < deletes.length; i++){
+    deletes[i].addEventListener('click', (e) => deleteHandler(e.target.dataset.delid))
+}
+
+const deleteHandler = async (id) => {     
+            const response = await fetch(`/api/habits/${id}`, {
+                method: 'DELETE',
+                body: JSON.stringify({habit_id: id }),
+                headers: {'Content-Type': 'application/json'},
+            });
+
+
+            if (response.ok){
+                    console.log('Nice job! Now get out of my console')
+            } else {
+                    console.log('Uh oh there was an error with the entry handler')
+            }
+
+            document.location.replace(`/users/${userNum}`)
+}
+
+
 
 </script>
