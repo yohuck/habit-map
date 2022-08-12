@@ -400,6 +400,7 @@ form{
     width: 300px;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     margin: 1rem;
 }
 
@@ -614,4 +615,50 @@ hr{
     padding: 0.8em;
     margin-bottom: -0.1rem;
     box-shadow: 3px 3px rgb(40, 48, 49);
+}
+
+.settings{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #A4B8C4;
+    position: fixed;
+    z-index: 99;
+    top: -100vh;
+    /* transform: translateY(-100vh); */
+    transition: .4s ease-in-out;
+}
+
+#settings .ig{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+#settings button{
+    font-size: 1rem;
+    margin: 0.5rem;
+}
+
+.horiz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+input[type=checkbox]{
+    max-width: 2ch;
+}
+
+#delabel{
+    margin: 0;
+}
+
+.buttons-row{
+    display: flex;
+    justify-content: center
+    
 }
