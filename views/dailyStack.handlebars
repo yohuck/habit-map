@@ -75,14 +75,14 @@
 
                     e.target.parentElement.parentElement.setAttribute("style", "transform: translate(100vw);")
                     e.target.innerHTML=happyFunc()
-                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 1000)
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 200)
                 });
             }
             for (let i = 0; i < nope.length; i++){
                 nope[i].addEventListener('click', (e) => {
                     e.target.parentElement.parentElement.setAttribute("style", "transform: translate(-100vw);")
                     e.target.innerHTML=sadFunc()
-                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 5000)
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 200)
                 });
             }
 

@@ -83,7 +83,7 @@ module.exports = {
         midi = new Date(mid)
         const late = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()-1}`);
         latei = new Date(late)
-        const future = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()+3}`)
+        const future = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()+0}`)
   
         // let tempSeed = [
         //   {
@@ -233,6 +233,7 @@ module.exports = {
       const currentStreak = habit => {
         // console.log(habit.hathReturned)
         const pres = habit.hathReturned.findIndex(element => element.message === 'present')
+        habit.currentStreak = '0'
         // habit.hathReturned[pres - 1].found = true
         // habit.hathReturned[pres - 2].found = true
         // console.log(pres)
@@ -249,7 +250,7 @@ module.exports = {
           if (habit.currentStreak > habit.topStreak){
             habit.topStreak = habit.currentStreak
           }
-        }
+        } 
 
         // console.log(habit)
       }
