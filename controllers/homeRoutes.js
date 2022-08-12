@@ -106,9 +106,7 @@ router.get("/users/:id", withAuth, async (req, res) => {
             fullHabits: test,
             user: user,
             habits: user.habits,
-            // entries: user.habits.entries,
             days: week
-            // ...habity
         })
     
     } catch(err) {

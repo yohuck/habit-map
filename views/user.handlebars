@@ -5,7 +5,7 @@
             </article>
             <hr>
 
-
+  
 
             {{#each fullHabits as |habit|}}
             
@@ -23,11 +23,6 @@
                     {{#if day.isTopStreak}} <p class="streakEmoji">🔥</p>{{/if}}
                     </div>
                     {{/each}}
-                    {{!-- {{#each entries as |entry| }}
-                
-                        <div class="slot"></div>
-                    {{/each}}
-                        --}}
                 </div>
             </div>
 
@@ -41,19 +36,6 @@
             {{/each}}
 
 
-            {{!-- {{#each habits}}
-            {{/each}} --}}
-
-{{!-- <div class="row">
-    <h5>Dynamically created!</h5>
-{{#each days as |day |}}
-   <div class='slot
-   {{#if day.isFuture}}future{{/if}}'
-   {{#if day.isToday}}id="today"{{/if}}
-   ></div>
-{{/each}}
-</div> --}}
-   
             <button id="new_habit">Add new habit</button>
             <button id="stacker">Stack em!</button>
             <article class="hero-text">
