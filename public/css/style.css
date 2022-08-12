@@ -277,18 +277,19 @@ footer li{
     transform: (translateX(-50%)); 
     width: 90%;
     max-width: 350px;
-    height: 400px;
+    height: 450px;
     text-align: center;
     margin: 0rem auto;
-    border: 2px solid black;
-    border-radius: 5px;
+    /* border: 1px solid black; */
+    /* border-radius: 5px; */
     padding: 1rem;
     background-color: var(--bg-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition-duration: 0.5s;
+    transition-duration: 0.8s;
     transition-property: transform;
+    box-shadow: 5px 5px rgba(40, 48, 49, 0.199);
 }
 
 .card h3{
@@ -374,6 +375,8 @@ footer li{
 
     z-index: 6;
 }
+
+
 
 
 form{

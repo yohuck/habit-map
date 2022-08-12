@@ -62,6 +62,20 @@ module.exports = {
       return weekArr
     
     },
+
+    encourageCards: (input)=> {
+      const habitFilter = input => {
+        let ayyyy = input.hathReturned.findIndex(elem => elem.message == 'present')
+        return !input.hathReturned[ayyyy].found
+      }
+
+      const output = input.habits.filter(habit => habitFilter(habit))
+
+      return output
+    },
+
+
+
     // takes in entries and finds the first and last date, then creates an array of object representing every day in that range and marks whether or note an entry exists for each date in the range
     dateRange: (input) => {
 

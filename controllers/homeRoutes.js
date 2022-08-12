@@ -144,19 +144,39 @@ router.get("/users/:id/new", withAuth, async (req, res) => {
 
 router.get('/users/:id/stack', async (req, res) => {
 try{
-    const habitData = await Habit.findAll({
-        where: {
-            user_id: req.params.id,
-        },
+    const userData = await User.findByPk(req.params.id, {
+        attributes: {exclude: ['password']},
+        include: [{ model: Habit, 
+            include: [{ model: Entry }] }]
+      });
 
-        raw: true
-    })
+    // console.log('checkpoint 1')
+      const user = userData.get({plain: true})
+      const week = helpers.buildWeek()
+      let habits = []
+      user.habits ? habits = user.habits : ''
+      
 
-    console.log(habitData)
+    //   console.log('here?')
+  
+        const test = helpers.dateRange(user)
+
+        const addEncouragement = helpers.encourageCards(user)
+
+        console.log(addEncouragement)
+
+
+    
 
     // let habits = habitData.get({plain: true})
 
-    res.render('dailyStack', {habitData})
+    res.render('dailyStack', {
+        fullHabits: addEncouragement,
+        user: user,
+        habits: user.habits,
+        days: week,
+        loggedIn: req.session.loggedIn
+    })
 } catch(err) {
     res.status(500).json(err)
 }

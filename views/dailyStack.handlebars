@@ -1,7 +1,47 @@
  <section class="stack" id="stack">
             <h2>Today's Stack</h2>
             <div class="horiz-scroll">
-            {{#each habitData as | habit |}}
+
+                  {{#each fullHabits as |habit|}}
+            
+            <div class="card">
+                <div class="habit_title_text">
+                    <h3 class="habit_title">{{habit.name}}</h3>
+                    <h5 class="habit_title">Max-Streak: {{habit.topStreak}} | Current Streak: {{habit.currentStreak}}</h5>
+                
+                </div>
+                
+                <div class="wrapper">
+                    <div class="row sml-row">
+                        {{#each hathReturned as |day |}}
+                        <div class='slot smaller {{day.found}} {{day.message}}'
+                        >
+                        {{#if day.isTopStreak}} <p class="streakEmoji">🔥</p>{{/if}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                <p class="habit_descrip">{{habit.description}}</p>
+                
+                <div class="actions" data-habitId="{{habit.id}}">
+                    <button class="no">x</button>
+                    <button class="skip">skip</button>
+                    <button class="yes">y</button>
+                </div>
+
+
+                    
+            </div>
+
+            {{/each}}
+
+
+
+
+            
+
+
+            {{!-- {{#each habitData as | habit |}}
                 <div class="card">
                     <h3>{{habit.name}}</h3>
                     <div class="row  sml-row">
@@ -28,7 +68,7 @@
                     </div>
                         
                 </div>
-           {{/each}}
+           {{/each}} --}}
 
                 <div class="card">
                     <h3 id="greatJob"></h3>
