@@ -22,7 +22,7 @@
             <ul>
                 {{#if loggedIn}}
                 <li>
-                   <a class="settings_widget"><i class="fa-solid fa-gear" alt="settings"></i></a>
+                   <a class="settings_widget"><i class="fa-solid fa-gear settt fa-xl" alt="settings"></i></a>
                 </li>
                 {{else}}
                 <li>
@@ -94,7 +94,14 @@
     if (settings[0]){
             settings[0].addEventListener('click', (e) => {
         e.preventDefault()
-        toggle ? settingsDrawer[0].setAttribute('style', 'transform: translateY(0)') : settingsDrawer[0].setAttribute('style', 'transform: translateY(100vh)')
+        console.log(e.target)
+        e.target.classList.add('rotator')
+        if (toggle) {
+            settingsDrawer[0].setAttribute('style', 'transform: translateY(0)')
+            e.target.classList.remove('rotator')
+        } else {
+            settingsDrawer[0].setAttribute('style', 'transform: translateY(100vh)')
+                }
         toggle = !toggle
 
     })
@@ -105,6 +112,8 @@
         e.preventDefault()
 
         settingsDrawer[0].setAttribute('style', 'transform: translateY(0vh)')
+        console.log(settings[0])
+        settings[0].children[0].classList.remove('rotator')
     })
 
     loggy[0].addEventListener('click', (e) => {
