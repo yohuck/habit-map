@@ -15,13 +15,17 @@ router.get("/", withAuth, async (req, res) => {
 });
 
 //getting habitData by id
-router.get("/:id", withAuth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    const habitData = await Habit.findByPk(req.params.id);
+    const habitData = await Habit.findByPk(req.params.id, {
+      include: [{ model: Entry }],
+    });
     if (!habitData) {
       res.status(404).json({ message: "No habit with this id." });
       return;
     }
+    let response = habitData
+    console.log(response)
     res.status(200).json(habitData);
   } catch (error) {
     res.status(500).json({ message: `An ${error} has occured.` });
