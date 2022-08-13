@@ -12,6 +12,8 @@ Habit Stack is an application that aims to help users build habits that stick th
 - MySQL & the Sequelize ORM for the database
 - Handlebars.js as the template engine
 - MVC paradigm folder structure
+- Open Source Chart Image API
+- Heroku & ClearDB for Deployment
 - **npm Dependencies**
   - <ins>bcrypt:</ins> A library to help you hash passwords.
   - <ins>connect-session-sequelize:</ins> A SQL session store using Sequelize.js.
@@ -41,6 +43,8 @@ At this time, no tests have been documented for this application.
 
 ## Demos & Mockups:film_projector:
 
+[Demo Gif](https://duvirtfsfpt04-1b15042.slack.com/files/U03AD769WFK/F03TXQM95TK/document__6_.gif)
+
 ## Future Development:seedling:
 
 - Ability to set up daily or weekly SMS:calling: reminders :alarm_clock: via API (ie: Twilio).
@@ -53,3 +57,6 @@ At this time, no tests have been documented for this application.
 - :octocat: GitHub: [@Chris](https://github.com/Vesuro30)
 - :octocat: GitHub: [@Mar'Quis](https://github.com/MHubert91)
 - :octocat: GitHub: [@Lindsey](https://github.com/lindsey-lansford)
+
+### Heroku Deployment
+[Habit Stack](https://habitstack.herokuapp.com/)
