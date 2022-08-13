@@ -742,3 +742,8 @@ input[type=checkbox]{
     line-height: 2rem;
     width: 90%;
 }
+
+.habit_title{
+    line-height: 1.5rem;
+
+}
