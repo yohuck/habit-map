@@ -43,7 +43,7 @@ At this time, no tests have been documented for this application.
 
 ## Demos & Mockups:film_projector:
 
-[Demo Gif](https://duvirtfsfpt04-1b15042.slack.com/files/U03AD769WFK/F03TXQM95TK/document__6_.gif)
+![Demo Gif](/public/screenshot.gif)
 
 ## Future Development:seedling:
 
