@@ -43,7 +43,7 @@
       
             <article class="hero-text">
                 <h2>Your Reports</h2>
-                <p>Habits completed/day</p>
+                {{!-- <p>Habits completed/day</p> --}}
                    <div class="chart-wrapper" id="chart-wrapper" ></div>
             
             </article>
@@ -121,6 +121,17 @@ const deleteHandler = async (id) => {
      const drawChart = (input) => {
         let entries = []
         input.habits.forEach(habit => habit.entries.forEach(entry => entries.push(entry)))
+
+        if (entries.length == 0)
+        {
+            console.log('right here baby')
+        let draw = document.getElementById('chart-wrapper')
+       let chartImg =  document.createElement("p")
+        chartImg.innerHTML=('Not enough data yet. Come back later')
+       draw.appendChild(chartImg)
+       return;
+
+        }
 
 
         const today = new Date;
