@@ -43,14 +43,11 @@
       
             <article class="hero-text">
                 <h2>Your Reports</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, ipsam.</p>
-                   <div class="chart-wrapper container" id="chart-wrapper" ></div>
-                       <button id="getChart">Get chart</button>
+                <p>Habits completed/day</p>
+                   <div class="chart-wrapper" id="chart-wrapper" ></div>
+            
             </article>
-            <article class="hero-text">
-                <h2>Your Reminders</h2>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum esse placeat at quia praesentium natus dicta veniam necessitatibus magni, ipsum magnam, provident reiciendis voluptatibus, enim dolores? </p>
-            </article>
+
         </section> 
 
         <script>
@@ -97,7 +94,7 @@ const deleteHandler = async (id) => {
 
 
     
-            response = await fetch('/api/users/4', {
+            response = await fetch(`/api/users/${userNum}`, {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'},
             });
@@ -124,16 +121,81 @@ const deleteHandler = async (id) => {
      const drawChart = (input) => {
         let entries = []
         input.habits.forEach(habit => habit.entries.forEach(entry => entries.push(entry)))
-        console.log(entries)
+
+
+        const today = new Date;
+        let lowest = today
+        let highest = today
+
+
+        entries.forEach(obj => new Date(obj.date) > highest ? highest = obj.date : '')
+        entries.forEach(obj => new Date(obj.date) < lowest ? lowest = obj.date : '')
+
+ 
+
+        let returner = []
+
+        const first = new Date(lowest)
+        let loop = new Date(first)
+        while (loop <= highest) {
+            let ayo = loop.toDateString()
+
+            returner.push({
+                date: ayo,
+                count: 0
+            })
+
+            let newDate = loop.setDate(loop.getDate() + 1)
+            loop = new Date(newDate)
+        }
+
+  
+
+    {{!-- console.log(entries) --}}
+
+        const countAtDate = date => {
+            const d = new Date(date)
+            let counter = 0
+            for (let i = 0; i < entries.length; i++){
+                let p = new Date(entries[i].date)
+                let pt = p.toDateString()
+                let q = d.toDateString()
+                console.log({q, pt})
+                if(pt == q){
+                    counter++
+                }
+
+            } return counter
+        }
+
+          returner.forEach(date => console.log(date.date) )
+          returner.forEach(date => date.count = countAtDate(date.date) )
+          console.log(returner)
+          returner.forEach(date => date.date = new Date(date.date).toLocaleDateString())
+        console.log(returner)
+        let data1 = ''
+        returner.forEach(date => {
+            const a = new Date (date.date)
+            const b = a.getDate()
+            date.a = b
+        })
+        returner.forEach(date => data1 += `${date.a},`)
+        console.log(data1)
+
+        let data2 = 'data1='
+        returner.forEach(date => data2 += `${date.count},` )
+
+        //?data1=50,40,30,20
+
 
         //https://quickchart.io/chart?c={type:'bar',data:{labels:[2012,2013,2014,2015,2016],datasets:[{label:'Users',data:[120,60,50,180,120]}]}}
 
        let draw = document.getElementById('chart-wrapper')
        let chartImg =  document.createElement("IMG")
-        chartImg.src = "https://quickchart.io/chart/render/zm-72a6341c-82b2-4557-a55f-144bd2bb5648?data1=50,40,30,20"
+        chartImg.src = `https://quickchart.io/chart/render/zm-b6dc63b0-b741-4e8c-ad55-ddb18d090286
+?${data1}&${data2}&labels=${data1}`
        draw.appendChild(chartImg)
 
-       console.log(draw)
 
 
     }
