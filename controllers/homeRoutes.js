@@ -28,6 +28,56 @@ router.get('/logout', async (req, res) => {
     })
 })
 
+router.get("/chart", withAuth, async (req, res) => {
+    // console.log('here 000')
+    try{
+        const userData = await User.findByPk(4, {
+            attributes: {exclude: ['password']},
+            include: [{ model: Habit, 
+                include: [{ model: Entry }] }]
+          });
+
+        // console.log('checkpoint 1')
+          const user = userData.get({plain: true})
+          const week = helpers.buildWeek()
+          let habits = []
+          user.habits ? habits = user.habits : ''
+          
+
+        //   console.log('here?')
+      
+            const test = helpers.dateRange(user)
+
+            console.log(test)
+
+            // console.log(test)
+          
+          
+        //   habits.forEach(habit => {
+        //     habit.week = week
+        //   })
+
+        //   user.forEach(habit => {
+        //     habit.week = week
+            
+        //   });
+
+        //   console.log(user)
+
+
+        res.render('chart', {
+            fullHabits: test,
+            user: user,
+            habits: user.habits,
+            days: week,
+            loggedIn: req.session.loggedIn
+        })
+    
+    } catch(err) {
+        res.status(500).json(err)
+    }
+  });
+
 router.get('/login', async (req, res) => {
     
     if (req.session.loggedIn){
@@ -144,19 +194,39 @@ router.get("/users/:id/new", withAuth, async (req, res) => {
 
 router.get('/users/:id/stack', async (req, res) => {
 try{
-    const habitData = await Habit.findAll({
-        where: {
-            user_id: req.params.id,
-        },
+    const userData = await User.findByPk(req.params.id, {
+        attributes: {exclude: ['password']},
+        include: [{ model: Habit, 
+            include: [{ model: Entry }] }]
+      });
 
-        raw: true
-    })
+    // console.log('checkpoint 1')
+      const user = userData.get({plain: true})
+      const week = helpers.buildWeek()
+      let habits = []
+      user.habits ? habits = user.habits : ''
+      
 
-    console.log(habitData)
+    //   console.log('here?')
+  
+        const test = helpers.dateRange(user)
+
+        const addEncouragement = helpers.encourageCards(user)
+
+        console.log(addEncouragement)
+
+
+    
 
     // let habits = habitData.get({plain: true})
 
-    res.render('dailyStack', {habitData})
+    res.render('dailyStack', {
+        fullHabits: addEncouragement,
+        user: user,
+        habits: user.habits,
+        days: week,
+        loggedIn: req.session.loggedIn
+    })
 } catch(err) {
     res.status(500).json(err)
 }

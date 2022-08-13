@@ -1,7 +1,68 @@
  <section class="stack" id="stack">
             <h2>Today's Stack</h2>
             <div class="horiz-scroll">
-            {{#each habitData as | habit |}}
+
+                  {{#each fullHabits as |habit|}}
+            
+            <div class="card">
+                <div class="habit_title_text">
+                    <h3 class="habit_title">{{habit.name}}</h3>
+                    <h5 class="habit_title">Max-Streak: {{habit.topStreak}} | Current Streak: {{habit.currentStreak}}</h5>
+                
+                </div>
+                
+                <div class="wrapper">
+                    <div class="row sml-row">
+                        {{#each hathReturned as |day |}}
+                        <div class='slot smaller {{day.found}} {{day.message}}'
+                        >
+                        {{#if day.isTopStreak}} <p class="streakEmoji">🔥</p>{{/if}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                <p class="habit_descrip">{{habit.description}}</p>
+                
+                <div class="actions" data-habitId="{{habit.id}}">
+                    <button class="no">x</button>
+                    <button class="skip">skip</button>
+                    <button class="yes">y</button>
+                </div>
+
+
+                    
+            </div>
+
+            <div class="card">
+                <div class="habit_title_text">
+                    <h3 class="habit_title">hfgasdjkfh</h3>
+                    <h5 class="habit_title">Keep it up</h5>
+                
+                </div>
+                
+          
+          
+                <p class="habit_descrip">blah blah</p>
+                
+                <div class="actions" data-habitId="{{habit.id}}">
+    
+                    <button class="skip">Next</button>
+       
+                </div>
+
+
+                    
+            </div>
+
+            {{/each}}
+
+
+
+
+            
+
+
+            {{!-- {{#each habitData as | habit |}}
                 <div class="card">
                     <h3>{{habit.name}}</h3>
                     <div class="row  sml-row">
@@ -28,9 +89,9 @@
                     </div>
                         
                 </div>
-           {{/each}}
+           {{/each}} --}}
 
-                <div class="card">
+                <div class="card nicejob">
                     <h3 id="greatJob"></h3>
                     <br>
                     <p>High five! 🙏 That's it for now. Go scroll TikTok or something.</p>
@@ -75,14 +136,14 @@
 
                     e.target.parentElement.parentElement.setAttribute("style", "transform: translate(100vw);")
                     e.target.innerHTML=happyFunc()
-                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 200)
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 500)
                 });
             }
             for (let i = 0; i < nope.length; i++){
                 nope[i].addEventListener('click', (e) => {
                     e.target.parentElement.parentElement.setAttribute("style", "transform: translate(-100vw);")
                     e.target.innerHTML=sadFunc()
-                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 200)
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 500)
                 });
             }
 
@@ -90,7 +151,7 @@
                 skippy[i].addEventListener('click', (e) => {
                     e.target.parentElement.parentElement.setAttribute("style", "transform: translate(-100vw);")
                     e.target.innerHTML=`🤔`
-                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 5000)
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 500)
                 });
             }
 
