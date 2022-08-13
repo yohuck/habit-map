@@ -35,16 +35,16 @@
 
             <div class="card">
                 <div class="habit_title_text">
-                    <h3 class="habit_title">hfgasdjkfh</h3>
-                    <h5 class="habit_title">Keep it up</h5>
+        
+                    <h3 class="habit_title quotes">Keep it up</h3>
                 
                 </div>
                 
           
           
-                <p class="habit_descrip">blah blah</p>
+           
                 
-                <div class="actions" data-habitId="{{habit.id}}">
+                <div class="actions" data-habitId="">
     
                     <button class="skip">Next</button>
        
@@ -176,5 +176,26 @@
                 const userId = window.location.pathname.split('/')[2]
                 document.location.replace(`/users/${userId}`)
             })
+
+
+            const quotes = document.getElementsByClassName('quotes')
+
+            let quotesArray = [
+                '"The secret of getting ahead is getting started." — Mark Twain',
+                '"Hold the vision, trust the process." — Unknown ',
+                '"Impossible is just an opinion." — Paulo Coelho',
+                '"The way I see it, if you want the rainbow, you gotta put up with the rain." — Dolly Parton',
+                '"Get busy living or get busy dying." — Stephen King',
+                '"Keep your face always toward the sunshine, and shadows will fall behind you." — Walt Whitman',
+                '"Success is not final, failure is not fatal: it is the courage to continue that counts." — Winston Churchill',
+                '“Everything you can imagine is real.”―Pablo Picasso',
+                '“It’s no use going back to yesterday, because I was a different person then.” ―Lewis Carroll'
+            ];
+        
+            for (let i = 0; i < quotes.length; i++){
+                quotes[i].innerHTML=quotesArray[i]
+
+
+            }
 
         </script>
