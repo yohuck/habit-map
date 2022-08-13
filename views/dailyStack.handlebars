@@ -33,6 +33,27 @@
                     
             </div>
 
+            <div class="card">
+                <div class="habit_title_text">
+                    <h3 class="habit_title">hfgasdjkfh</h3>
+                    <h5 class="habit_title">Keep it up</h5>
+                
+                </div>
+                
+          
+          
+                <p class="habit_descrip">blah blah</p>
+                
+                <div class="actions" data-habitId="{{habit.id}}">
+    
+                    <button class="skip">Next</button>
+       
+                </div>
+
+
+                    
+            </div>
+
             {{/each}}
 
 
@@ -70,7 +91,7 @@
                 </div>
            {{/each}} --}}
 
-                <div class="card">
+                <div class="card nicejob">
                     <h3 id="greatJob"></h3>
                     <br>
                     <p>High five! 🙏 That's it for now. Go scroll TikTok or something.</p>
@@ -115,14 +136,14 @@
 
                     e.target.parentElement.parentElement.setAttribute("style", "transform: translate(100vw);")
                     e.target.innerHTML=happyFunc()
-                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 200)
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 500)
                 });
             }
             for (let i = 0; i < nope.length; i++){
                 nope[i].addEventListener('click', (e) => {
                     e.target.parentElement.parentElement.setAttribute("style", "transform: translate(-100vw);")
                     e.target.innerHTML=sadFunc()
-                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 200)
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 500)
                 });
             }
 
@@ -130,7 +151,7 @@
                 skippy[i].addEventListener('click', (e) => {
                     e.target.parentElement.parentElement.setAttribute("style", "transform: translate(-100vw);")
                     e.target.innerHTML=`🤔`
-                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 5000)
+                    setTimeout(() => {e.target.parentElement.parentElement.remove()}, 500)
                 });
             }
 

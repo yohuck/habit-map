@@ -1,7 +1,11 @@
        <section class="hero-2" id="stacks">
             <div class="bg"></div>
             <article class="hero-text">
-               <h2 class="user_text">{{user.first_name}}'s Stack</h2>
+                <h2 class="user_text">{{user.first_name}}'s Stack</h2>
+                <div class="btngrp">
+                    <button id="new_habit" class="hbt">New habit</button>
+                    <button id="stacker" class="hbt">Stack em!</button>
+                </div>
             </article>
             <hr>
 
@@ -36,11 +40,12 @@
             {{/each}}
 
 
-            <button id="new_habit">Add new habit</button>
-            <button id="stacker">Stack em!</button>
+      
             <article class="hero-text">
                 <h2>Your Reports</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, ipsam.</p>
+                   <div class="chart-wrapper container" id="chart-wrapper" ></div>
+                       <button id="getChart">Get chart</button>
             </article>
             <article class="hero-text">
                 <h2>Your Reminders</h2>
@@ -88,6 +93,65 @@ const deleteHandler = async (id) => {
             document.location.replace(`/users/${userNum}`)
 }
 
+ const getChart = async e => {
 
+
+    
+            response = await fetch('/api/users/4', {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json'},
+            });
+
+            if (response.ok){
+     
+                const responseData = await response.json()
+
+                console.log(responseData)
+      
+                drawChart(responseData)
+            } else {
+                const errorSlot = document.getElementById('error')
+                errorSlot.textContent = 'Something went wrong :('
+            }
+        
+    } 
+
+    {{!-- const cgetChart = document.getElementById('getChart')
+    .addEventListener('click', registerFormHandler) --}}
+
+          
+
+     const drawChart = (input) => {
+        let entries = []
+        input.habits.forEach(habit => habit.entries.forEach(entry => entries.push(entry)))
+        console.log(entries)
+
+        //https://quickchart.io/chart?c={type:'bar',data:{labels:[2012,2013,2014,2015,2016],datasets:[{label:'Users',data:[120,60,50,180,120]}]}}
+
+       let draw = document.getElementById('chart-wrapper')
+       let chartImg =  document.createElement("IMG")
+        chartImg.src = "https://quickchart.io/chart/render/zm-72a6341c-82b2-4557-a55f-144bd2bb5648?data1=50,40,30,20"
+       draw.appendChild(chartImg)
+
+       console.log(draw)
+
+
+    }
+
+    getChart()
 
 </script>
+
+<style>
+    .chart-wrapper{
+        max-width: 95vw;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .chart-wrapper img{
+        max-width: 100%;
+    }
+</style>

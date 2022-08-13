@@ -71,6 +71,8 @@ module.exports = {
 
       const output = input.habits.filter(habit => habitFilter(habit))
 
+      console.log(output)
+
       return output
     },
 
