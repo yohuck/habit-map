@@ -67,8 +67,6 @@ stacker.addEventListener('click', () => {
 
 const deletes = document.getElementsByClassName('delete_habit')
 
-console.log(deletes)
-
 for (let i = 0; i < deletes.length; i++){
     deletes[i].addEventListener('click', (e) => deleteHandler(e.target.dataset.delid))
 }
@@ -103,7 +101,7 @@ const deleteHandler = async (id) => {
      
                 const responseData = await response.json()
 
-                console.log(responseData)
+      
       
                 drawChart(responseData)
             } else {
@@ -122,15 +120,12 @@ const deleteHandler = async (id) => {
         let entries = []
         input.habits.forEach(habit => habit.entries.forEach(entry => entries.push(entry)))
 
-        if (entries.length == 0)
-        {
-            console.log('right here baby')
-        let draw = document.getElementById('chart-wrapper')
-       let chartImg =  document.createElement("p")
-        chartImg.innerHTML=('Not enough data yet. Come back later')
-       draw.appendChild(chartImg)
-       return;
-
+        if (entries.length == 0){
+            let draw = document.getElementById('chart-wrapper')
+            let chartImg =  document.createElement("p")
+            chartImg.innerHTML=('Not enough data yet. Come back later')
+            draw.appendChild(chartImg)
+            return;
         }
 
 
@@ -162,7 +157,7 @@ const deleteHandler = async (id) => {
 
   
 
-    {{!-- console.log(entries) --}}
+
 
         const countAtDate = date => {
             const d = new Date(date)
@@ -171,7 +166,6 @@ const deleteHandler = async (id) => {
                 let p = new Date(entries[i].date)
                 let pt = p.toDateString()
                 let q = d.toDateString()
-                console.log({q, pt})
                 if(pt == q){
                     counter++
                 }
@@ -179,11 +173,8 @@ const deleteHandler = async (id) => {
             } return counter
         }
 
-          returner.forEach(date => console.log(date.date) )
-          returner.forEach(date => date.count = countAtDate(date.date) )
-          console.log(returner)
-          returner.forEach(date => date.date = new Date(date.date).toLocaleDateString())
-        console.log(returner)
+        returner.forEach(date => date.count = countAtDate(date.date) )
+        returner.forEach(date => date.date = new Date(date.date).toLocaleDateString())
         let data1 = ''
         returner.forEach(date => {
             const a = new Date (date.date)
@@ -191,21 +182,13 @@ const deleteHandler = async (id) => {
             date.a = b
         })
         returner.forEach(date => data1 += `${date.a},`)
-        console.log(data1)
-
         let data2 = 'data1='
         returner.forEach(date => data2 += `${date.count},` )
-
-        //?data1=50,40,30,20
-
-
-        //https://quickchart.io/chart?c={type:'bar',data:{labels:[2012,2013,2014,2015,2016],datasets:[{label:'Users',data:[120,60,50,180,120]}]}}
-
-       let draw = document.getElementById('chart-wrapper')
-       let chartImg =  document.createElement("IMG")
+        let draw = document.getElementById('chart-wrapper')
+        let chartImg =  document.createElement("IMG")
         chartImg.src = `https://quickchart.io/chart/render/zm-b6dc63b0-b741-4e8c-ad55-ddb18d090286
 ?${data1}&${data2}&labels=${data1}`
-       draw.appendChild(chartImg)
+        draw.appendChild(chartImg)
 
 
 
