@@ -38,16 +38,16 @@
                 <div id="error"></div>
                 <div class="ig">
                     <label for="email_s">Email:</label>
-                    <input type="text" name="email_s" id="email_s">
+                    <input type="text" name="email_s" id="email_s" autocomplete="email">
                 </div>
 
                 <div class="ig">
                     <label for="pw">Current Password:</label>
-                    <input type="password" name="pwc" id="pwc">
+                    <input type="password" name="current-password" id="current-password" autocomplete="current-password">
                 </div>
                 <div class="ig">
                     <label for="pw_new">New Password:</label>
-                    <input type="password" name="pw_new" id="pw_new">
+                    <input type="password" name="pw_new" id="new-password" autocomplete="new-password">
                 </div>
                 <div class="ig">
                     <div class="horiz">
@@ -88,13 +88,13 @@
     let settingsDrawer = document.getElementsByClassName('settings');
     let cancelUpdate = document.getElementsByClassName('cancelUpdate');
     let loggy = document.getElementsByClassName('loggy');
+    let savePassword = document.getElementsByClassName('savePassword');
 
     let toggle = false;
 
     if (settings[0]){
             settings[0].addEventListener('click', (e) => {
         e.preventDefault()
-        console.log(e.target)
         e.target.classList.add('rotator')
         if (toggle) {
             settingsDrawer[0].setAttribute('style', 'transform: translateY(0)')
@@ -108,11 +108,10 @@
     }
 
 
+
     cancelUpdate[0].addEventListener('click', (e) => {
         e.preventDefault()
-
         settingsDrawer[0].setAttribute('style', 'transform: translateY(0vh)')
-        console.log(settings[0])
         settings[0].children[0].classList.remove('rotator')
     })
 
@@ -120,6 +119,40 @@
         e.preventDefault()
          document.location.replace(`/logout`)
     })
+
+    savePassword[0].addEventListener('click', (e) => {
+        e.preventDefault();
+        let deleter = document.getElementById('delete_user').checked;
+        let email = document.getElementById('email_s').value.trim();
+        let oldPassword = document.getElementById('current-password').value.trim();
+        let newPassword = document.getElementById('new-password').value.trim();
+        console.log({
+            deleter,
+            email,
+            oldPassword,
+            newPassword
+        });
+
+        if (deleter){
+            //fetch delete user route
+        } else {
+            const updateUserRoute = data => {
+                console.log(data)
+                settingsDrawer[0].setAttribute('style', 'transform: translateY(0vh)');
+                settings[0].children[0].classList.remove('rotator');
+            }
+            const badPassword = () => {
+                const errorSlot = document.getElementById('error');
+       
+                errorSlot.textContent = "Make sure your password is at least 8 characters";
+            }
+            newPassword.length > 8 ? updateUserRoute() : badPassword()
+        }
+    })
+
+
+
+
 
 
 

@@ -1,6 +1,7 @@
 <section class="hero" id="login">
-  <div id="error"></div>
+
   <form action="#">
+        <div id="error_2" class="error_2"></div>
     <div class="ig">
       <label for="fname">First:</label>
       <input type="text" name="fname" id="fname"  />
@@ -11,22 +12,24 @@
     </div>
     <div class="ig">
       <label for="email">Email:</label>
-      <input type="text" name="email" id="email"  />
+      <input type="text" name="email" id="email" autocomplete="email" />
     </div>
     <div class="ig">
       <label for="phone">Phone:</label>
-      <input type="text" name="phone" id="phone"  />
+      <input type="text" name="phone" id="phone" autocomplete="phone" />
     </div>
     <div class="ig">
+    
       <label for="pw">Password:</label>
       <input
         type="password"
         name="pw"
+        autocomplete="new-password"
         id="pw"
      
       />
     </div>
-    <div class="ig">
+    <div class="ig_row">
       <label for="opt">Allow text reminders</label>
       <input type="checkbox" name="opt" id="opt" />
     </div>
@@ -45,6 +48,8 @@
         phone_number = document.getElementById('phone').value.trim()
         password = document.getElementById('pw').value.trim()
         allowText = document.getElementById('opt').value.trim()
+
+      if (password.length > 7){
         if (email && password && fname && lname) {
             response = await fetch('/api/users/', {
                 method: 'POST',
@@ -61,6 +66,12 @@
                 errorSlot.textContent = 'Something went wrong :('
             }
         }
+      } else {
+          const errorSlot = document.getElementById('error_2');
+          errorSlot.classList.add('show')
+          errorSlot.innerHTML = "Make sure your password is at least 8 characters";
+      }
+
     }
     const create_account = document.getElementById('create_account')
     .addEventListener('click', registerFormHandler)

@@ -433,6 +433,12 @@ form{
     margin: 0.5rem;
 }
 
+.ig_row{
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.6rem;
+}
+
 .topper{
     margin-top: 5rem;
 }
@@ -580,10 +586,15 @@ label{
     position: relative;
 }
 
-#error{
-    width: 90%;
+#error, #error_2{
+    width: 95%;
+    font-size: 0.8rem;
     margin: 1rem auto;
     color:#ca0c0c;
+}
+
+.error_2{
+    display: none;
 }
 
 .false {
@@ -746,4 +757,8 @@ input[type=checkbox]{
 .habit_title{
     line-height: 1.5rem;
 
+}
+
+.show{
+    display: block;
 }
