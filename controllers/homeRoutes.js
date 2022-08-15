@@ -127,21 +127,21 @@ router.get("/users/:id", withAuth, async (req, res) => {
         const userData = await User.findByPk(req.params.id, {
             attributes: {exclude: ['password']},
             include: [{ model: Habit, 
-                include: [{ model: Entry }] }]
+            include: [{ model: Entry }] }]
           });
 
-        // console.log('checkpoint 1')
+        console.log('checkpoint 1')
           const user = userData.get({plain: true})
           const week = helpers.buildWeek()
           let habits = []
           user.habits ? habits = user.habits : ''
           
 
-        //   console.log('here?')
+          console.log('here?')
       
             const test = helpers.dateRange(user)
-
-            // console.log(test)
+            console.log('here tho?')
+            console.log(test)
           
           
         //   habits.forEach(habit => {
