@@ -158,7 +158,6 @@ module.exports = {
         if(habit.hathReturned[pres].found === true){
           let count = 0
           let x = pres
-          console.log(habit.hathReturned)
 
           const testCon = input => {
             if (habit.hathReturned[x]){
@@ -168,13 +167,10 @@ module.exports = {
 
           for (let i = 1; testCon(x); i--){
             count++;
-            console.log(count)
             x -= 1
           } 
-          console.log('did we get here with 3')
           
           habit.currentStreak = count
-          console.log(`The current streak is ${habit.currentStreak}`)
           if (habit.currentStreak > habit.topStreak){
             habit.topStreak = habit.currentStreak
           }
@@ -183,13 +179,9 @@ module.exports = {
 
       // Calls the procresRange & streakTest functions on each habit if there is at least one habit and that habit has at least one entry.
       if (input.habits.length > 0 && input.habits[0].entries){
-        console.log('checkpoint 1 in helpers')
         input.habits.forEach(habit => processRange(habit))
-        console.log('checkpoint 2 in helpers')
         input.habits.forEach(habit => streakTest(habit))
-        console.log('checkpoint 3 in helpers')
         input.habits.forEach(habit => currentStreak(habit) )
-        console.log('checkpoint 4 in helpers')
         return input.habits
       } else return ''
     }
