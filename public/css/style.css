@@ -642,7 +642,7 @@ hr{
 }
 
 .streakEmoji{
-    font-size: clamp(1.3rem, 5vw, 2.5rem);
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
     text-align: center;
 }
 
