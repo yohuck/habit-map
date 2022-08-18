@@ -132,7 +132,7 @@
             oldPassword,
             newPassword
         });
-
+        // User delete route
         if (deleter){
             const user_id = window.location.pathname.split('/')[2]
             response = await fetch(`/api/users/login`, {
@@ -147,7 +147,12 @@
                     HEADER: {'Content-Type': 'applciation/json'},
 
                 }); if(response.ok){
-                    document.location.replace('/')
+                    response = await fetch(`/api/users/logout`,{
+                        method: 'POST',
+                    }); if (response.ok){
+                        document.location.replace('/')
+                    }
+                    
                 } else{
                     console.log('real bad')
                 }
@@ -157,7 +162,7 @@
                 errorSlot.textContent = 'Incorrect email or password'
             }
 
-            //fetch delete user route
+        // User update route
         } else {
             const updateUserRoute = (email, oldPassword, newPassword) => {
                 console.log({email, oldPassword, newPassword})
