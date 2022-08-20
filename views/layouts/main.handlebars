@@ -126,6 +126,7 @@
         let email = document.getElementById('email_s').value.trim();
         let oldPassword = document.getElementById('current-password').value.trim();
         let newPassword = document.getElementById('new-password').value.trim();
+        const user_id = window.location.pathname.split('/')[2]
         console.log({
             deleter,
             email,
@@ -134,7 +135,7 @@
         });
         // User delete route
         if (deleter){
-            const user_id = window.location.pathname.split('/')[2]
+            
             response = await fetch(`/api/users/login`, {
                 method: 'POST',
                 body: JSON.stringify({user_id, email, password: oldPassword}),
@@ -164,8 +165,18 @@
 
         // User update route
         } else {
-            const updateUserRoute = (email, oldPassword, newPassword) => {
+            const updateUserRoute = async (email, oldPassword, newPassword) => {
                 console.log({email, oldPassword, newPassword})
+                response = await fetch(`/api/users/${user_id}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({password: newPassword}),
+                    headers: {'Content-Type': 'application/json'},
+                }); if (response.ok){
+                    console.log(response)
+                    {{!-- document.location.replace(`/users/${user_id}`) --}}
+                } else {
+                    console.log('oh no')
+                }
                 settingsDrawer[0].setAttribute('style', 'transform: translateY(0vh)');
                 settings[0].children[0].classList.remove('rotator');
             }
