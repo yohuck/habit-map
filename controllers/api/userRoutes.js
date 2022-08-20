@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Habit, Entry } = require("../../models");
+const { beforeBulkCreate } = require("../../models/User");
 const withAuth = require("../../utils/auth");
 
 //getting all userData
@@ -144,7 +145,7 @@ router.post("/logout", (req, res) => {
 });
 
 //UPDATE route for a specific User id
-router.put("/:id", async (req, res) => {
+router.put("/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.update(
       {
@@ -160,6 +161,7 @@ router.put("/:id", async (req, res) => {
       res.status(404).json({ message: "No user was found with this id." });
       return;
     }
+    console.log(userData)
     res.status(200).json({ message: `User's password was successfully updated.` });
   } catch (error) {
     res.status(500).json({ message: `An ${error} has occured.` });
