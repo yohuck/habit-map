@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { User, Habit, Entry } = require("../../models");
-const { beforeBulkCreate } = require("../../models/User");
 const withAuth = require("../../utils/auth");
 
 //getting all userData
