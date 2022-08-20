@@ -150,7 +150,7 @@ router.put("/:id", withAuth, async (req, res) => {
       {
         password: req.body.password,
       },
-      {
+      { individualHooks: true,
         where: {
           id: req.params.id,
         },
