@@ -3,16 +3,16 @@ const { User, Habit, Entry } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //getting all userData
-router.get("/", async (req, res) => {
-  try {
-    const userData = await User.findAll({
-      include: [{ model: Habit, include: [{ model: Entry }] }],
-    });
-    res.status(200).json(userData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+// router.get("/", async (req, res) => {
+//   try {
+//     const userData = await User.findAll({
+//       include: [{ model: Habit, include: [{ model: Entry }] }],
+//     });
+//     res.status(200).json(userData);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
 
 //getting userData id
 router.get("/:id", withAuth, async (req, res) => {
@@ -31,7 +31,7 @@ router.get("/:id", withAuth, async (req, res) => {
 });
 
 //getting all User Habits
-router.get("/habits/:id", async (req, res) => {
+router.get("/habits/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
       include: [{ model: Habit }],
@@ -48,7 +48,7 @@ router.get("/habits/:id", async (req, res) => {
 });
 
 //getting all User Entries
-router.get("/entries/:id", async (req, res) => {
+router.get("/entries/:id", withAuth, async (req, res) => {
   try {
     const response = await User.findByPk(req.params.id, {
       include: [{ model: Habit, include: [{ model: Entry }] }],
