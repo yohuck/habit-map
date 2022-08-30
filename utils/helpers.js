@@ -49,11 +49,13 @@ module.exports = {
     },
     // takes in entries and finds the first and last date, then creates an array of object representing every day in that range and marks whether or note an entry exists for each date in the range
   dateRange: (input) => {
+    console.log('inside the function')
     //helper function that padds each week and adds days in gaps where there are no entries.
     let processRange = (input) => {
       const entries = input.entries
         // creates a new date time object
       const today = new Date;
+      console.log(`today is ${today}`)
         // Finds the high/low range.
       let lowest = today
       let highest = today
@@ -69,14 +71,27 @@ module.exports = {
         lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
       }
       const highestTest = new Date(highest).getDay()
+      console.log(highestTest)
       if (highestTest != 0){
         let fullerHigh = 7 - highestTest
-        highest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate() +  fullerHigh}`)
+        console.log(fullerHigh)
+        if ((today.getMonth()+1 == 8) && (today.getDate() + fullerHigh) > 31){
+          console.log('yerp')
+          const full = (today.getDate() + fullerHigh) - 31
+          console.log(full)
+          highest = Date.parse(`${today.getFullYear()}-${today.getMonth()+2}-${full}`)
+        } else{
+          highest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate() +  fullerHigh}`)
+        }
+  
+      
+     
       }
       //creates return array
       let returner = []
       // formats lowest then loops through each day adding one day at a time with getDate().
       const first = new Date(lowest)
+
       let loop = new Date (first)
       while (loop <= highest) {
         let ayo = loop.toDateString()
@@ -88,6 +103,8 @@ module.exports = {
         let newDate = loop.setDate(loop.getDate() + 1)
         loop = new Date(newDate)
       }
+
+
         // Formatts each date from the incoming entries
       entries.map((element) => {
           //grabs the Date
@@ -103,6 +120,7 @@ module.exports = {
       const returnThis = [];
       // Testes whether dates are in the past or the future
       for (let i = 0; i < returner.length; i++){
+
         let message = ''
         let day = returner[i].date.toString()
         let tested = new Date(day)
@@ -116,6 +134,7 @@ module.exports = {
         let found = entries.some(element => element.date.toString() == returner[i].date.toString())
         returnThis.push({day, found, message})
       } 
+
       input.hathReturned = returnThis
       return
       }
@@ -155,6 +174,7 @@ module.exports = {
       const currentStreak = habit => {
         const pres = habit.hathReturned.findIndex(element => element.message === 'present')
         habit.currentStreak = 0
+    
         if(habit.hathReturned[pres].found === true){
           let count = 0
           let x = pres
@@ -174,14 +194,18 @@ module.exports = {
           if (habit.currentStreak > habit.topStreak){
             habit.topStreak = habit.currentStreak
           }
-        } 
+        } else console.log('wow')
       }
 
       // Calls the procresRange & streakTest functions on each habit if there is at least one habit and that habit has at least one entry.
       if (input.habits.length > 0 && input.habits[0].entries){
         input.habits.forEach(habit => processRange(habit))
+        // console.log('after the first step')
         input.habits.forEach(habit => streakTest(habit))
+        // console.log('after the second step')
+        // console.log(input.habits)
         input.habits.forEach(habit => currentStreak(habit) )
+        // console.log('after the third step')
         return input.habits
       } else return ''
     }
