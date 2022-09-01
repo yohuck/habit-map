@@ -65,27 +65,23 @@ module.exports = {
       const lowestTest = lowest.getDay()
       if (lowestTest > 1 ){
         let fuller = lowestTest- 1
-        lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - fuller}`)
+        if (lowestTest < 7 || lowestTest == 31){
+          lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth() + 1}-${31 - fuller}`)
+        }
+        else {lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - fuller}`)}
       }
       if (lowestTest == 0 ){
         lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
       }
       const highestTest = new Date(highest).getDay()
-      console.log(highestTest)
       if (highestTest != 0){
         let fullerHigh = 7 - highestTest
-        console.log(fullerHigh)
         if ((today.getMonth()+1 == 8) && (today.getDate() + fullerHigh) > 31){
-          console.log('yerp')
           const full = (today.getDate() + fullerHigh) - 31
-          console.log(full)
           highest = Date.parse(`${today.getFullYear()}-${today.getMonth()+2}-${full}`)
         } else{
           highest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate() +  fullerHigh}`)
         }
-  
-      
-     
       }
       //creates return array
       let returner = []
