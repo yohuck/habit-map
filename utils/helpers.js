@@ -65,7 +65,10 @@ module.exports = {
       const lowestTest = lowest.getDay()
       if (lowestTest > 0 ){
         let fuller = lowestTest- 3
-       lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - fuller}`)
+        if (lowestTest < 7 || lowestTest == 31){
+          lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth() }-${31 - fuller}`)
+        }
+        else {lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - fuller}`)}
       }
       if (lowestTest == 0 ){
         lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
