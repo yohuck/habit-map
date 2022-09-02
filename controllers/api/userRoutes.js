@@ -21,7 +21,7 @@ router.get("/:id", async (req, res) => {
       include: [{ model: Habit, include: [{ model: Entry }] }],
     });
 
-    console.log(userData)
+
 
     if (!userData) {
       res.status(404).json({ message: "No user with this id!" });
@@ -29,7 +29,7 @@ router.get("/:id", async (req, res) => {
     }
     res.status(200).json(userData);
   } catch (error) {
-    console.log("here?")
+
     res.status(500).json({ message: `An ${error} has occured.` });
   }
 });

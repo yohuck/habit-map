@@ -137,18 +137,11 @@ router.get("/users/:id", withAuth, async (req, res) => {
           user.habits ? habits = user.habits : ''
           
 
-        console.log('here?')
-        console.log(user)
+
       
         const test = helpers.dateRange(user)
         
-        console.log('here?')
-          
-        console.log(test)
-        console.log(user)
-        console.log(user.habits)
-        console.log(week)
-        console.log(req.session.loggedIn)
+
 
         res.render('user', {
             fullHabits: test,

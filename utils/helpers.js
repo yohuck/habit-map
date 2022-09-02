@@ -65,10 +65,7 @@ module.exports = {
       const lowestTest = lowest.getDay()
       if (lowestTest > 0 ){
         let fuller = lowestTest- 3
-        if (lowestTest < 7 || lowestTest == 31){
-          lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth() }-${31 - fuller}`)
-        }
-        else {lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - fuller}`)}
+       lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - fuller}`)
       }
       if (lowestTest == 0 ){
         lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
@@ -98,6 +95,14 @@ module.exports = {
         })
         let newDate = loop.setDate(loop.getDate() + 1)
         loop = new Date(newDate)
+      }
+      console.log('helloooooo')
+      console.log(returner.length)
+      while (returner.length % 7 != 0){
+        returner.unshift({
+          date: "Wed Jul 28 1993",
+          hasEntry: false
+        })
       }
 
 
