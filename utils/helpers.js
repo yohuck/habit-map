@@ -63,10 +63,11 @@ module.exports = {
       entries.forEach(obj => obj.date < lowest ? lowest = obj.date : '')
       // Checks the lowest date and adds padding to create a full week
       const lowestTest = lowest.getDay()
+      const lowestDate = lowest.getDate()
       if (lowestTest > 0 ){
         let fuller = lowestTest- 3
-        if (lowestTest < 7 || lowestTest == 31){
-          lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth() }-${31 - fuller}`)
+        if (lowestDate < 7 ){
+          lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth() + 1 }-${31 - fuller}`)
         }
         else {lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - fuller}`)}
       }
