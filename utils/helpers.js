@@ -64,17 +64,25 @@ module.exports = {
       // Checks the lowest date and adds padding to create a full week
       const lowestTest = lowest.getDay()
       const lowestDate = lowest.getDate()
-      if (lowestTest > 0 ){
-        let fuller = lowestTest- 3
+      if (lowestTest >= 0 ){
+        // at one point was subtracted from 31
+        console.log(lowestTest)
+        let fuller = lowestTest- 3 
+        console.log(fuller)
         if (lowestDate < 7 ){
-          lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()  }-${31 - fuller}`)
+          console.log('here')
+          lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()  }-${31}`)
+          console.log(lowest)
         }
+
+   
         else {lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - fuller}`)}
       }
-      if (lowestTest == 0 ){
-        lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
-      }
+      // if (lowestTest == 0 ){
+      //   lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
+      // }
       const highestTest = new Date(highest).getDay()
+
       if (highestTest != 0){
         let fullerHigh = 7 - highestTest
         if ((today.getMonth()+1 == 8) && (today.getDate() + fullerHigh) > 31){
