@@ -122,6 +122,8 @@ router.get('/users', async (req, res) => {
 
 router.get("/users/:id", withAuth, async (req, res) => {
 
+    console.log('get indivisual user')
+
     try{
         const userData = await User.findByPk(req.params.id, {
             attributes: {exclude: ['password']},
@@ -141,6 +143,7 @@ router.get("/users/:id", withAuth, async (req, res) => {
       
         const test = helpers.dateRange(user)
         
+        console.log(test)
 
 
         res.render('user', {
