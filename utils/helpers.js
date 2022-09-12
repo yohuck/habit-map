@@ -67,7 +67,7 @@ module.exports = {
       if (lowestTest >= 0 ){
         // at one point was subtracted from 31
         console.log(lowestTest)
-        let fuller = lowestTest 
+        let fuller = 7 - lowestTest 
         console.log(fuller)
         console.log('inside')
         if (lowestDate < 7 ){
@@ -76,8 +76,8 @@ module.exports = {
           console.log(lowest)
         }
 
-   
-        else {lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - fuller}`)}
+   // had - fuller on lowest.getDate()
+        else {lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate()}`)}
       }
       // if (lowestTest == 0 ){
       //   lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
@@ -111,6 +111,7 @@ module.exports = {
       }
       console.log('helloooooo')
       console.log(returner.length)
+      console.log(returner)
       while (returner.length % 7 != 0){
         returner.unshift({
           date: "Wed Jul 28 1993",
