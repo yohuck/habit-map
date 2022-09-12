@@ -67,8 +67,9 @@ module.exports = {
       if (lowestTest >= 0 ){
         // at one point was subtracted from 31
         console.log(lowestTest)
-        let fuller = lowestTest- 3 
+        let fuller = lowestTest 
         console.log(fuller)
+        console.log('inside')
         if (lowestDate < 7 ){
           console.log('here')
           lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()  }-${31}`)
