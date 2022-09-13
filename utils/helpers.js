@@ -62,37 +62,37 @@ module.exports = {
       entries.forEach(obj => obj.date > highest ? highest = obj.date : '' )
       entries.forEach(obj => obj.date < lowest ? lowest = obj.date : '')
       // Checks the lowest date and adds padding to create a full week
-      const lowestTest = lowest.getDay()
-      const lowestDate = lowest.getDate()
-      if (lowestTest >= 0 ){
-        // at one point was subtracted from 31
-        console.log(lowestTest)
-        let fuller = 7 - lowestTest 
-        console.log(fuller)
-        console.log('inside')
-        if (lowestDate < 7 ){
-          console.log('here')
-          lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()  }-${31}`)
-          console.log(lowest)
-        }
+  //     const lowestTest = lowest.getDay()
+  //     const lowestDate = lowest.getDate()
+  //     if (lowestTest >= 0 ){
+  //       // at one point was subtracted from 31
+  //       console.log(lowestTest)
+  //       let fuller = 7 - lowestTest 
+  //       console.log(fuller)
+  //       console.log('inside')
+  //       if (lowestDate < 7 ){
+  //         console.log('here')
+  //         lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()  }-${31}`)
+  //         console.log(lowest)
+  //       }
 
-   // had - fuller on lowest.getDate()
-        else {lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate()}`)}
-      }
-      // if (lowestTest == 0 ){
-      //   lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
-      // }
-      const highestTest = new Date(highest).getDay()
+  //  // had - fuller on lowest.getDate()
+  //       else {lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate()}`)}
+  //     }
+  //     // if (lowestTest == 0 ){
+  //     //   lowest = Date.parse(`${lowest.getFullYear()}-${lowest.getMonth()+1}-${lowest.getDate() - 6}`)
+  //     // }
+  //     const highestTest = new Date(highest).getDay()
 
-      if (highestTest != 0){
-        let fullerHigh = 7 - highestTest
-        if ((today.getMonth()+1 == 8) && (today.getDate() + fullerHigh) > 31){
-          const full = (today.getDate() + fullerHigh) - 31
-          highest = Date.parse(`${today.getFullYear()}-${today.getMonth()+2}-${full}`)
-        } else{
-          highest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate() +  fullerHigh}`)
-        }
-      }
+  //     if (highestTest != 0){
+  //       let fullerHigh = 7 - highestTest
+  //       if ((today.getMonth()+1 == 8) && (today.getDate() + fullerHigh) > 31){
+  //         const full = (today.getDate() + fullerHigh) - 31
+  //         highest = Date.parse(`${today.getFullYear()}-${today.getMonth()+2}-${full}`)
+  //       } else{
+  //         highest = Date.parse(`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate() +  fullerHigh}`)
+  //       }
+  //     }
       //creates return array
       let returner = []
       // formats lowest then loops through each day adding one day at a time with getDate().
@@ -109,9 +109,16 @@ module.exports = {
         let newDate = loop.setDate(loop.getDate() + 1)
         loop = new Date(newDate)
       }
-      console.log('helloooooo')
-      console.log(returner.length)
-      console.log(returner)
+      // Finds what day of the week and adds days to the end to finish on a sunday
+      let dayIndex = highest.getDay()
+      let daysLeft = 7 - dayIndex
+      for (let i = 0; i < daysLeft; i++){
+        returner.push({
+          date: "Wed Jul 28 3000",
+          hasEntry: false
+        })
+      }
+      // Adds days to the front if the first day is not Monday
       while (returner.length % 7 != 0){
         returner.unshift({
           date: "Wed Jul 28 1993",
